@@ -15,41 +15,5 @@ conda activate qwen
 pip install jupyterlab
 pip install "unsloth>=2024.10.0" transformers datasets trl bitsandbytes accelerate pillow
 
-def convert_for_vision(example):
-    new_messages = []
 
-    for msg in example["messages"]:
-        role = msg["role"]
-        blocks = []
-
-        for block in msg["content"]:
-            b_type = block.get("type")
-
-            # Keep text blocks unchanged
-            if b_type == "text":
-                blocks.append({
-                    "type": "text",
-                    "text": block["text"],
-                })
-
-            # Keep image blocks unchanged (must be a string path)
-            elif b_type == "image":
-                blocks.append({
-                    "type": "image",
-                    "image": block["image"],  # string path only
-                })
-
-            # Any unexpected block becomes text so template doesn’t break
-            else:
-                blocks.append({
-                    "type": "text",
-                    "text": str(block),
-                })
-
-        new_messages.append({
-            "role": role,
-            "content": blocks,
-        })
-
-    return {"messages": new_messages}
-
+jupyter lab --no-browser --port 8888
