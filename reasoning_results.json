@@ -1,0 +1,144 @@
+{
+  "guidance": [
+    {
+      "code": "URGENT_REFERRAL",
+      "text": "Urgent two-week-wait referral recommended. FIT result 142.0 \u00b5g Hb/g is elevated, combined with presenting symptoms (change in bowel habit, rectal bleeding, or weight loss).",
+      "priority": "urgent"
+    },
+    {
+      "code": "LYNCH_SCREENING",
+      "text": "Consider genetic testing for Lynch syndrome. Patient has iron deficiency anaemia and family history of colorectal cancer.",
+      "priority": "moderate"
+    },
+    {
+      "code": "IRON_TREATMENT",
+      "text": "Consider iron supplementation. Haemoglobin 103.0 g/L and Ferritin 18.0 \u00b5g/L are below normal ranges.",
+      "priority": "moderate"
+    },
+    {
+      "code": "COLONOSCOPY_RECOMMENDED",
+      "text": "Colonoscopy investigation recommended. FIT result 142.0 \u00b5g Hb/g is positive.",
+      "priority": "high"
+    },
+    {
+      "code": "ENHANCED_MONITORING",
+      "text": "Enhanced monitoring recommended. Patient has 6 risk factors for colorectal cancer.",
+      "priority": "high"
+    }
+  ],
+  "actions": [
+    {
+      "type": "urgent_referral",
+      "description": "Urgent two-week-wait colorectal referral required",
+      "timeframe": "2 weeks",
+      "urgency": "urgent"
+    },
+    {
+      "type": "genetic_testing",
+      "description": "Consider genetic testing for Lynch syndrome",
+      "timeframe": "within 1 month",
+      "urgency": "moderate"
+    },
+    {
+      "type": "iron_supplementation",
+      "description": "Consider iron supplementation for iron deficiency anaemia",
+      "timeframe": "immediate",
+      "urgency": "moderate"
+    },
+    {
+      "type": "colonoscopy",
+      "description": "Colonoscopy investigation required",
+      "timeframe": "2 weeks",
+      "urgency": "urgent"
+    },
+    {
+      "type": "safety_netting",
+      "description": "Enhanced monitoring and safety netting required. Patient has 6 risk factors. Advise patient to return if symptoms worsen or new symptoms develop.",
+      "timeframe": "ongoing",
+      "urgency": "moderate"
+    }
+  ],
+  "risk_assessment": {
+    "risk_score": 11,
+    "risk_level": "HIGH",
+    "risk_factors": [
+      "High FIT result (>100 \u00b5g Hb/g)",
+      "Change in bowel habit",
+      "Rectal bleeding",
+      "Unintentional weight loss",
+      "Iron deficiency anaemia",
+      "Family history of colorectal cancer"
+    ],
+    "total_factors": 6
+  },
+  "summary": "Patient Risk Assessment: HIGH (Score: 11)\nIdentified 6 risk factors.\n\nGenerated 5 guidance recommendations:\n  1. [URGENT_REFERRAL] Urgent two-week-wait referral recommended. FIT result 142.0 \u00b5g Hb/g is elevated, combined with presenting symptoms (change in bowel habit, rectal bleeding, or weight loss).\n  2. [LYNCH_SCREENING] Consider genetic testing for Lynch syndrome. Patient has iron deficiency anaemia and family history of colorectal cancer.\n  3. [IRON_TREATMENT] Consider iron supplementation. Haemoglobin 103.0 g/L and Ferritin 18.0 \u00b5g/L are below normal ranges.\n  4. [COLONOSCOPY_RECOMMENDED] Colonoscopy investigation recommended. FIT result 142.0 \u00b5g Hb/g is positive.\n  5. [ENHANCED_MONITORING] Enhanced monitoring recommended. Patient has 6 risk factors for colorectal cancer.",
+  "patient_data": {
+    "patient_id": "http://example.org/onto/colorectal#patient-1510f454",
+    "observations": {
+      "mcv": {
+        "value": 74.0,
+        "unit": "fL",
+        "type": "MCV_Result"
+      },
+      "ttg": {
+        "value": 0.0,
+        "unit": null,
+        "type": "Coeliac_TTG_Result"
+      },
+      "fit": {
+        "value": 142.0,
+        "unit": "\u00b5g Hb/g",
+        "type": "FIT_Result"
+      },
+      "egfr": {
+        "value": 74.0,
+        "unit": "ml/min/1.73 m\u00b2",
+        "type": "eGFR_Result"
+      },
+      "urineDipstick": {
+        "value": null,
+        "unit": null,
+        "type": "UrineDipstick_Result"
+      },
+      "creatinine": {
+        "value": 78.0,
+        "unit": "\u00b5mol/L",
+        "type": "Creatinine_Result"
+      },
+      "ferritin": {
+        "value": 18.0,
+        "unit": "\u00b5g/L",
+        "type": "Ferritin_Result"
+      },
+      "hb": {
+        "value": 103.0,
+        "unit": "g/L",
+        "type": "Haemoglobin_Result"
+      }
+    },
+    "conditions": [
+      "familyHistoryOfColorectalCancer",
+      "E03.9",
+      "K57.3",
+      "ironDeficiencyAnaemia",
+      "rectalBleeding",
+      "changeInBowelHabit",
+      "M17",
+      "unintentionalWeightLoss",
+      "E11",
+      "I10"
+    ],
+    "age": null,
+    "family_history": [
+      {
+        "relative": "Brother",
+        "condition": "Colorectal cancer"
+      },
+      {
+        "relative": "Mother",
+        "condition": "Endometrial cancer"
+      }
+    ],
+    "sex": "female"
+  }
+}

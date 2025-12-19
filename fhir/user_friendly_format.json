@@ -1,0 +1,342 @@
+{
+  "patient": {
+    "id": "patienta",
+    "name": {
+      "family": "PatientA",
+      "given": ["Test"],
+      "text": "Test PatientA"
+    },
+    "gender": "female",
+    "birthDate": "1956-01-15",
+    "nhsNumber": "1234567890",
+    "capacityToConsent": true,
+    "consentToText": true,
+    "interpreterRequired": false,
+    "address": {
+      "line": ["123 Main Street"],
+      "city": "London",
+      "postalCode": "SW1A 1AA"
+    },
+    "contact": {
+      "phone": "+44 20 1234 5678",
+      "email": "patient@example.com"
+    }
+  },
+  "observations": [
+    {
+      "id": "obs_fit",
+      "code": "fit",
+      "display": "Faecal immunochemical test",
+      "value": 142.0,
+      "unit": "µg Hb/g",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_hb",
+      "code": "hb",
+      "display": "Haemoglobin",
+      "value": 103.0,
+      "unit": "g/L",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_ferritin",
+      "code": "ferritin",
+      "display": "Ferritin",
+      "value": 18.0,
+      "unit": "µg/L",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_mcv",
+      "code": "mcv",
+      "display": "Mean corpuscular volume",
+      "value": 74.0,
+      "unit": "fL",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_creatinine",
+      "code": "creatinine",
+      "display": "Creatinine",
+      "value": 78.0,
+      "unit": "µmol/L",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_egfr",
+      "code": "egfr",
+      "display": "Estimated GFR",
+      "value": 74.0,
+      "unit": "ml/min/1.73 m²",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_ttg",
+      "code": "ttg",
+      "display": "tTG IgA",
+      "value": "negative",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_weight",
+      "code": "weight",
+      "display": "Body weight",
+      "value": 68.5,
+      "unit": "kg",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final"
+    },
+    {
+      "id": "obs_smoking_status",
+      "code": "smokingStatus",
+      "display": "Tobacco smoking status",
+      "value": "former",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final",
+      "note": "20 pack-years; quit 12 years ago"
+    },
+    {
+      "id": "obs_alcohol_use",
+      "code": "alcoholUse",
+      "display": "Alcohol consumption",
+      "value": 7,
+      "unit": "units per week",
+      "date": "2024-11-08T10:00:00+00:00",
+      "status": "final",
+      "note": "6-8 units per week"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "cond_bowel_habit",
+      "code": "changeInBowelHabit",
+      "display": "Change in bowel habit",
+      "status": "active",
+      "onsetDate": "2024-08-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_weight_loss",
+      "code": "unintentionalWeightLoss",
+      "display": "Unintentional weight loss",
+      "status": "active",
+      "onsetDate": "2024-07-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_rectal_bleeding",
+      "code": "rectalBleeding",
+      "display": "Rectal bleeding",
+      "status": "active",
+      "onsetDate": "2024-08-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_diabetes",
+      "code": "diabetesType2",
+      "display": "Diabetes mellitus type 2",
+      "status": "active",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_hypertension",
+      "code": "hypertension",
+      "display": "Hypertensive disorder",
+      "status": "active",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_hypothyroidism",
+      "code": "hypothyroidism",
+      "display": "Hypothyroidism",
+      "status": "active",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_diverticulitis",
+      "code": "diverticulitis",
+      "display": "Diverticulitis of sigmoid colon",
+      "status": "resolved",
+      "onsetDate": "2019-11-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_osteoarthritis",
+      "code": "osteoarthritis",
+      "display": "Osteoarthritis of knee",
+      "status": "active",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "cond_ida",
+      "code": "ironDeficiencyAnaemia",
+      "display": "Iron deficiency anaemia",
+      "status": "active",
+      "assertedDate": "2024-11-08"
+    }
+  ],
+  "medications": [
+    {
+      "id": "med_metformin",
+      "name": "Metformin",
+      "status": "active",
+      "taken": "y",
+      "startDate": "2024-01-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "med_ramipril",
+      "name": "Ramipril",
+      "status": "active",
+      "taken": "y",
+      "startDate": "2024-01-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "med_levothyroxine",
+      "name": "Levothyroxine",
+      "status": "active",
+      "taken": "y",
+      "startDate": "2024-01-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "med_omeprazole",
+      "name": "Omeprazole",
+      "status": "active",
+      "taken": "y",
+      "startDate": "2024-01-01",
+      "assertedDate": "2024-11-08"
+    },
+    {
+      "id": "med_paracetamol",
+      "name": "Paracetamol",
+      "status": "active",
+      "taken": "y",
+      "startDate": "2024-01-01",
+      "assertedDate": "2024-11-08",
+      "note": "PRN"
+    }
+  ],
+  "familyHistory": [
+    {
+      "id": "fmh_brother_crc",
+      "relationship": "brother",
+      "gender": "male",
+      "condition": {
+        "code": "colorectalCancer",
+        "display": "Malignant neoplasm of colon",
+        "ageAtDiagnosis": 62
+      },
+      "status": "completed"
+    },
+    {
+      "id": "fmh_mother_endo",
+      "relationship": "mother",
+      "gender": "female",
+      "condition": {
+        "code": "endometrialCancer",
+        "display": "Malignant neoplasm of endometrium"
+      },
+      "status": "completed"
+    }
+  ],
+  "allergies": [
+    {
+      "id": "alg1",
+      "substance": "Penicillin",
+      "display": "Penicillin allergy",
+      "type": "allergy",
+      "category": "medication",
+      "clinicalStatus": "active",
+      "verificationStatus": "confirmed",
+      "criticality": "high",
+      "reaction": {
+        "manifestation": "Anaphylaxis",
+        "onsetDate": "2010-05-15"
+      },
+      "assertedDate": "2010-05-15"
+    }
+  ],
+  "referral": {
+    "id": "ref_colorectal",
+    "type": "colorectalSurgery",
+    "display": "Referral to colorectal surgery",
+    "status": "active",
+    "intent": "order",
+    "priority": "urgent",
+    "reason": "Urgent two-week-wait colorectal pathway referral",
+    "authoredDate": "2024-11-08T12:00:00+00:00"
+  },
+  "encounter": {
+    "id": "enc1",
+    "status": "in-progress",
+    "type": "outpatient",
+    "date": "2024-11-08T10:00:00+00:00",
+    "reason": "Urgent two-week-wait colorectal referral"
+  },
+  "organization": {
+    "id": "org1",
+    "name": "NHS Trust Hospital",
+    "odsCode": "ABC123"
+  },
+  "practitioner": {
+    "id": "pract1",
+    "name": {
+      "family": "Smith",
+      "given": ["John"],
+      "text": "Dr. John Smith"
+    },
+    "gender": "male",
+    "active": true,
+    "role": "General Practitioner",
+    "contact": {
+      "phone": "+44 20 9876 5432",
+      "email": "john.smith@nhs.net"
+    },
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/gmc-number",
+      "value": "GMC123456"
+    }
+  },
+  "rules": [
+    {
+      "id": "rule_1",
+      "name": "High FIT + Symptoms → Urgent Referral",
+      "description": "If FIT > 100 AND patient has symptoms (change in bowel habit, rectal bleeding, or weight loss), then recommend urgent referral",
+      "conditions": {
+        "observations": {
+          "fit": {
+            "operator": ">",
+            "threshold": 100
+          }
+        },
+        "conditions": {
+          "any_of": ["changeInBowelHabit", "rectalBleeding", "unintentionalWeightLoss"]
+        }
+      },
+      "guidance": {
+        "code": "URGENT_REFERRAL",
+        "priority": "urgent",
+        "text": "Urgent two-week-wait referral recommended. FIT result is elevated, combined with presenting symptoms."
+      },
+      "actions": [
+        {
+          "type": "urgent_referral",
+          "description": "Urgent two-week-wait colorectal referral required",
+          "timeframe": "2 weeks",
+          "urgency": "urgent"
+        }
+      ]
+    }
+  ]
+}
+

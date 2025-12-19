@@ -1,0 +1,454 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FHIR Clinical Ontology JSON Format",
+  "description": "JSON format for representing clinical data based on the FHIR ontology",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "description": "The type of resource bundle",
+      "enum": ["Bundle", "Patient", "Observation", "Condition", "MedicationStatement", "FamilyMemberHistory", "ReferralRequest", "Encounter", "CarePlan", "AllergyIntolerance", "Organization", "Practitioner", "Procedure"]
+    },
+    "id": {
+      "type": "string",
+      "description": "Logical id of the resource"
+    },
+    "entry": {
+      "type": "array",
+      "description": "Array of resources when resourceType is Bundle",
+      "items": {
+        "$ref": "#/definitions/Resource"
+      }
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "oneOf": [
+        { "$ref": "#/definitions/Patient" },
+        { "$ref": "#/definitions/Observation" },
+        { "$ref": "#/definitions/Condition" },
+        { "$ref": "#/definitions/MedicationStatement" },
+        { "$ref": "#/definitions/FamilyMemberHistory" },
+        { "$ref": "#/definitions/ReferralRequest" },
+        { "$ref": "#/definitions/Encounter" },
+        { "$ref": "#/definitions/CarePlan" },
+        { "$ref": "#/definitions/AllergyIntolerance" },
+        { "$ref": "#/definitions/Organization" },
+        { "$ref": "#/definitions/Practitioner" },
+        { "$ref": "#/definitions/Procedure" }
+      ]
+    },
+    "Patient": {
+      "type": "object",
+      "required": ["resourceType"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Patient" },
+        "id": { "type": "string" },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "system": { "type": "string" },
+              "value": { "type": "string" }
+            }
+          }
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "family": { "type": "string" },
+              "given": { "type": "array", "items": { "type": "string" } },
+              "text": { "type": "string" }
+            }
+          }
+        },
+        "gender": { "type": "string", "enum": ["male", "female", "other", "unknown"] },
+        "birthDate": { "type": "string", "format": "date" },
+        "active": { "type": "boolean" },
+        "nhsNumber": { "type": "string" },
+        "capacityToConsent": { "type": "boolean" },
+        "interpreterRequired": { "type": "boolean" },
+        "language": { "type": "string" },
+        "ethnicCategory": { "type": "string" },
+        "maritalStatus": { "$ref": "#/definitions/CodeableConcept" },
+        "managingOrganization": { "$ref": "#/definitions/Reference" },
+        "generalPractitioner": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Reference" }
+        },
+        "address": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Address" }
+        },
+        "telecom": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ContactPoint" }
+        }
+      }
+    },
+    "Observation": {
+      "type": "object",
+      "required": ["resourceType", "status", "code"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Observation" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["registered", "preliminary", "final", "amended", "corrected", "cancelled", "entered-in-error", "unknown"] },
+        "code": { "$ref": "#/definitions/CodeableConcept" },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "effectiveDateTime": { "type": "string", "format": "date-time" },
+        "valueQuantity": { "$ref": "#/definitions/Quantity" },
+        "valueString": { "type": "string" },
+        "valueBoolean": { "type": "boolean" },
+        "interpretation": { "$ref": "#/definitions/CodeableConcept" },
+        "bodySite": { "$ref": "#/definitions/CodeableConcept" },
+        "category": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CodeableConcept" }
+        },
+        "encounter": { "$ref": "#/definitions/Reference" }
+      }
+    },
+    "Condition": {
+      "type": "object",
+      "required": ["resourceType", "clinicalStatus", "code"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Condition" },
+        "id": { "type": "string" },
+        "clinicalStatus": { "type": "string", "enum": ["active", "recurrence", "relapse", "inactive", "remission", "resolved", "unknown"] },
+        "verificationStatus": { "type": "string" },
+        "code": { "$ref": "#/definitions/CodeableConcept" },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "onsetDateTime": { "type": "string", "format": "date-time" },
+        "assertedDate": { "type": "string", "format": "date-time" },
+        "asserter": { "$ref": "#/definitions/Reference" },
+        "category": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CodeableConcept" }
+        },
+        "encounter": { "$ref": "#/definitions/Reference" }
+      }
+    },
+    "MedicationStatement": {
+      "type": "object",
+      "required": ["resourceType", "status"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "MedicationStatement" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "completed", "entered-in-error", "intended", "stopped", "on-hold", "unknown", "not-taken"] },
+        "medicationReference": { "$ref": "#/definitions/Reference" },
+        "medicationCodeableConcept": { "$ref": "#/definitions/CodeableConcept" },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "taken": { "type": "string", "enum": ["y", "n", "unk", "na"] },
+        "dateAsserted": { "type": "string", "format": "date-time" },
+        "effectiveDateTime": { "type": "string", "format": "date-time" },
+        "dosage": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Dosage" }
+        },
+        "note": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Annotation" }
+        },
+        "context": { "$ref": "#/definitions/Reference" }
+      }
+    },
+    "FamilyMemberHistory": {
+      "type": "object",
+      "required": ["resourceType", "status", "patient"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "FamilyMemberHistory" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["partial", "completed", "entered-in-error", "health-unknown"] },
+        "patient": { "$ref": "#/definitions/Reference" },
+        "relationship": { "$ref": "#/definitions/CodeableConcept" },
+        "gender": { "type": "string", "enum": ["male", "female", "other", "unknown"] },
+        "condition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": { "$ref": "#/definitions/CodeableConcept" },
+              "outcome": { "$ref": "#/definitions/CodeableConcept" }
+            }
+          }
+        },
+        "notDoneReason": { "$ref": "#/definitions/CodeableConcept" }
+      }
+    },
+    "ReferralRequest": {
+      "type": "object",
+      "required": ["resourceType", "status", "intent", "subject"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "ReferralRequest" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "active", "suspended", "cancelled", "completed", "entered-in-error", "unknown"] },
+        "intent": { "type": "string", "enum": ["proposal", "plan", "order", "original-order", "reflex-order", "filler-order", "instance-order", "option"] },
+        "type": { "$ref": "#/definitions/CodeableConcept" },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "context": { "$ref": "#/definitions/Reference" },
+        "authoredOn": { "type": "string", "format": "date-time" },
+        "requester": {
+          "type": "object",
+          "properties": {
+            "agent": { "$ref": "#/definitions/Reference" },
+            "onBehalfOf": { "$ref": "#/definitions/Reference" }
+          }
+        },
+        "recipient": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Reference" }
+        },
+        "reasonCode": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CodeableConcept" }
+        },
+        "serviceRequested": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CodeableConcept" }
+        },
+        "specialty": { "$ref": "#/definitions/CodeableConcept" }
+      }
+    },
+    "Encounter": {
+      "type": "object",
+      "required": ["resourceType", "status", "class"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Encounter" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["planned", "arrived", "triaged", "in-progress", "onleave", "finished", "cancelled", "entered-in-error", "unknown"] },
+        "class": { "$ref": "#/definitions/Coding" },
+        "type": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CodeableConcept" }
+        },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "period": { "$ref": "#/definitions/Period" },
+        "serviceProvider": { "$ref": "#/definitions/Reference" },
+        "priority": { "$ref": "#/definitions/CodeableConcept" }
+      }
+    },
+    "CarePlan": {
+      "type": "object",
+      "required": ["resourceType", "status", "intent"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "CarePlan" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "active", "suspended", "completed", "entered-in-error", "cancelled", "unknown", "on-hold", "revoked"] },
+        "intent": { "type": "string", "enum": ["proposal", "plan", "order", "option"] },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "author": { "$ref": "#/definitions/Reference" },
+        "period": { "$ref": "#/definitions/Period" },
+        "activity": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "detail": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "description": { "type": "string" },
+                  "code": { "$ref": "#/definitions/CodeableConcept" }
+                }
+              }
+            }
+          }
+        },
+        "category": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CodeableConcept" }
+        }
+      }
+    },
+    "AllergyIntolerance": {
+      "type": "object",
+      "required": ["resourceType", "clinicalStatus", "type"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "AllergyIntolerance" },
+        "id": { "type": "string" },
+        "clinicalStatus": { "type": "string", "enum": ["active", "inactive", "resolved"] },
+        "verificationStatus": { "type": "string", "enum": ["unconfirmed", "confirmed", "refuted", "entered-in-error"] },
+        "type": { "type": "string", "enum": ["allergy", "intolerance"] },
+        "category": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["food", "medication", "environment", "biologic"] }
+        },
+        "criticality": { "type": "string", "enum": ["low", "high", "unable-to-assess"] },
+        "code": { "$ref": "#/definitions/CodeableConcept" },
+        "patient": { "$ref": "#/definitions/Reference" },
+        "onsetDateTime": { "type": "string", "format": "date-time" },
+        "assertedDate": { "type": "string", "format": "date-time" },
+        "asserter": { "$ref": "#/definitions/Reference" },
+        "reaction": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "manifestation": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/CodeableConcept" }
+              },
+              "substance": { "$ref": "#/definitions/CodeableConcept" },
+              "onset": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "required": ["resourceType"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Organization" },
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "active": { "type": "boolean" },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "system": { "type": "string" },
+              "value": { "type": "string" }
+            }
+          }
+        },
+        "address": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Address" }
+        },
+        "telecom": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ContactPoint" }
+        }
+      }
+    },
+    "Practitioner": {
+      "type": "object",
+      "required": ["resourceType"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Practitioner" },
+        "id": { "type": "string" },
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "family": { "type": "string" },
+              "given": { "type": "array", "items": { "type": "string" } },
+              "text": { "type": "string" }
+            }
+          }
+        },
+        "gender": { "type": "string", "enum": ["male", "female", "other", "unknown"] },
+        "active": { "type": "boolean" },
+        "telecom": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ContactPoint" }
+        }
+      }
+    },
+    "Procedure": {
+      "type": "object",
+      "required": ["resourceType"],
+      "properties": {
+        "resourceType": { "type": "string", "const": "Procedure" },
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["preparation", "in-progress", "not-done", "on-hold", "stopped", "completed", "entered-in-error", "unknown"] },
+        "code": { "$ref": "#/definitions/CodeableConcept" },
+        "subject": { "$ref": "#/definitions/Reference" },
+        "context": { "$ref": "#/definitions/Reference" },
+        "performedDateTime": { "type": "string", "format": "date-time" },
+        "performer": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Reference" }
+        },
+        "reason": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Reference" }
+        }
+      }
+    },
+    "CodeableConcept": {
+      "type": "object",
+      "properties": {
+        "coding": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Coding" }
+        },
+        "text": { "type": "string" }
+      }
+    },
+    "Coding": {
+      "type": "object",
+      "properties": {
+        "system": { "type": "string", "format": "uri" },
+        "code": { "type": "string" },
+        "display": { "type": "string" }
+      }
+    },
+    "Reference": {
+      "type": "object",
+      "properties": {
+        "reference": { "type": "string" },
+        "display": { "type": "string" }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "system": { "type": "string", "format": "uri" },
+        "code": { "type": "string" }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "line": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "city": { "type": "string" },
+        "district": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "type": { "type": "string" },
+        "text": { "type": "string" }
+      }
+    },
+    "ContactPoint": {
+      "type": "object",
+      "properties": {
+        "system": { "type": "string", "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"] },
+        "value": { "type": "string" }
+      }
+    },
+    "Period": {
+      "type": "object",
+      "properties": {
+        "start": { "type": "string", "format": "date-time" },
+        "end": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Dosage": {
+      "type": "object",
+      "properties": {
+        "doseQuantity": { "$ref": "#/definitions/Quantity" },
+        "route": { "$ref": "#/definitions/CodeableConcept" },
+        "asNeededBoolean": { "type": "boolean" }
+      }
+    },
+    "Annotation": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "time": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}
+

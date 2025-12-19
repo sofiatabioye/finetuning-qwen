@@ -1,1 +1,5 @@
 .env
+.venv/
+florence2_dataset.zip
+ontology_viewer/
+__pycache__/

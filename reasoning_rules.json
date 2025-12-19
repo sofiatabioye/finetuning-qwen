@@ -1,0 +1,167 @@
+{
+  "rules": [
+    {
+      "id": "rule_1",
+      "name": "High FIT + Symptoms → Urgent Referral",
+      "description": "IF: FIT > 100 AND (ChangeInBowelHabit OR RectalBleeding OR UnintentionalWeightLoss) THEN: Urgent Referral recommended",
+      "conditions": {
+        "observations": {
+          "fit": {
+            "operator": ">",
+            "threshold": 100
+          }
+        },
+        "conditions": {
+          "any_of": ["changeInBowelHabit", "rectalBleeding", "unintentionalWeightLoss"]
+        }
+      },
+      "guidance": {
+        "code": "URGENT_REFERRAL",
+        "priority": "urgent",
+        "text_template": "Urgent two-week-wait referral recommended. FIT result {fit_value} µg Hb/g is elevated, combined with presenting symptoms (change in bowel habit, rectal bleeding, or weight loss)."
+      },
+      "actions": [
+        {
+          "type": "urgent_referral",
+          "description": "Urgent two-week-wait colorectal referral required",
+          "timeframe": "2 weeks",
+          "urgency": "urgent"
+        }
+      ]
+    },
+    {
+      "id": "rule_2",
+      "name": "Iron Deficiency Anaemia + Family History → Lynch Syndrome",
+      "description": "IF: IronDeficiencyAnaemia AND FamilyHistoryOfColorectalCancer THEN: Consider genetic testing for Lynch syndrome",
+      "conditions": {
+        "conditions": {
+          "all_of": ["ironDeficiencyAnaemia", "familyHistoryOfColorectalCancer"]
+        },
+        "family_history": {
+          "any_contains": ["colorectal", "cancer"]
+        }
+      },
+      "guidance": {
+        "code": "LYNCH_SCREENING",
+        "priority": "moderate",
+        "text_template": "Consider genetic testing for Lynch syndrome. Patient has iron deficiency anaemia and family history of colorectal cancer."
+      },
+      "actions": [
+        {
+          "type": "genetic_testing",
+          "description": "Consider genetic testing for Lynch syndrome",
+          "timeframe": "within 1 month",
+          "urgency": "moderate"
+        }
+      ]
+    },
+    {
+      "id": "rule_3",
+      "name": "Low Haemoglobin + Low Ferritin → Iron Treatment",
+      "description": "IF: Haemoglobin < 120 AND Ferritin < 30 THEN: Consider iron supplementation",
+      "conditions": {
+        "observations": {
+          "hb": {
+            "operator": "<",
+            "threshold": 120
+          },
+          "ferritin": {
+            "operator": "<",
+            "threshold": 30
+          }
+        }
+      },
+      "guidance": {
+        "code": "IRON_TREATMENT",
+        "priority": "moderate",
+        "text_template": "Consider iron supplementation. Haemoglobin {hb_value} g/L and Ferritin {ferritin_value} µg/L are below normal ranges."
+      },
+      "actions": [
+        {
+          "type": "iron_supplementation",
+          "description": "Consider iron supplementation for iron deficiency anaemia",
+          "timeframe": "immediate",
+          "urgency": "moderate"
+        }
+      ]
+    },
+    {
+      "id": "rule_4",
+      "name": "Positive FIT → Colonoscopy",
+      "description": "IF: FIT > 10 THEN: Colonoscopy investigation recommended",
+      "conditions": {
+        "observations": {
+          "fit": {
+            "operator": ">",
+            "threshold": 10
+          }
+        }
+      },
+      "guidance": {
+        "code": "COLONOSCOPY_RECOMMENDED",
+        "priority": "high",
+        "text_template": "Colonoscopy investigation recommended. FIT result {fit_value} µg Hb/g is positive."
+      },
+      "actions": [
+        {
+          "type": "colonoscopy",
+          "description": "Colonoscopy investigation required",
+          "timeframe": "2 weeks",
+          "urgency": "urgent"
+        }
+      ]
+    },
+    {
+      "id": "rule_5",
+      "name": "Multiple Risk Factors → Enhanced Monitoring",
+      "description": "IF: ≥3 risk factors THEN: Enhanced monitoring recommended",
+      "conditions": {
+        "risk_factors": {
+          "min_count": 3,
+          "factors": [
+            {
+              "type": "observation",
+              "code": "fit",
+              "operator": ">",
+              "threshold": 100
+            },
+            {
+              "type": "condition",
+              "code": "changeInBowelHabit"
+            },
+            {
+              "type": "condition",
+              "code": "rectalBleeding"
+            },
+            {
+              "type": "condition",
+              "code": "unintentionalWeightLoss"
+            },
+            {
+              "type": "condition",
+              "code": "ironDeficiencyAnaemia"
+            },
+            {
+              "type": "condition",
+              "code": "familyHistoryOfColorectalCancer"
+            }
+          ]
+        }
+      },
+      "guidance": {
+        "code": "ENHANCED_MONITORING",
+        "priority": "high",
+        "text_template": "Enhanced monitoring recommended. Patient has {risk_factor_count} risk factors for colorectal cancer."
+      },
+      "actions": [
+        {
+          "type": "safety_netting",
+          "description": "Enhanced monitoring and safety netting required. Patient has {risk_factor_count} risk factors. Advise patient to return if symptoms worsen or new symptoms develop.",
+          "timeframe": "ongoing",
+          "urgency": "moderate"
+        }
+      ]
+    }
+  ]
+}
+

@@ -17,3 +17,36 @@ pip install "unsloth>=2024.10.0" transformers datasets trl bitsandbytes accelera
 
 
 jupyter lab --no-browser --port 8888
+
+
+This is a 68-year-old woman referred on an urgent two-week-wait colorectal pathway due to persistent change in bowel habit, unintentional weight loss, and a FIT result of 142 µg Hb/g. She reports looser stools over the past three months, associated with increased urgency. There has been intermittent rectal bleeding, described as dark red blood mixed with stool.
+
+Her past medical history includes type 2 diabetes mellitus, hypertension, hypothyroidism, and a previous sigmoid diverticulitis episode five years ago, treated conservatively. She also has chronic osteoarthritis of the knees. No known inflammatory bowel disease. Past procedures include a colonoscopy 10 years ago, reported as showing diverticular disease only.
+
+Her family history is notable for a brother diagnosed with colorectal cancer at age 62 and a mother with endometrial cancer, raising concern for a possible Lynch syndrome–associated pattern, though the patient has never undergone formal genetic assessment.
+
+In terms of social history, she is a former smoker (20-pack-years; quit 12 years ago). She drinks 6–8 units of alcohol per week. She lives independently but reports a recent decline in appetite and energy levels.
+
+Medication history includes metformin, ramipril, levothyroxine, omeprazole, and paracetamol PRN. No known drug allergies.
+
+Recent investigations show:
+
+FIT: 142 µg Hb/g (positive)
+
+Hb: 103 g/L (anaemia)
+
+Ferritin: 18 µg/L (low)
+
+MCV: 74 fL (microcytic)
+
+Creatinine: 78 µmol/L, eGFR 74 ml/min/1.73 m²
+
+TTG screen: negative
+
+Urine dipstick: normal
+
+Iron treatment has not yet been started
+
+Her WHO performance status is recorded as 1, and she retains capacity to consent. No interpreter is required.
+
+The GP notes progressive unintentional weight loss of approximately 6 kg over 4 months, and the patient reports reduced appetite and early satiety.

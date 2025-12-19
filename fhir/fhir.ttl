@@ -1,0 +1,2903 @@
+@prefix : <https://example.org/clinical-onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://example.org/clinical-onto#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://example.org/clinical-onto#CarePlan_identifier
+:CarePlan_identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#Identifier_value
+:Identifier_value rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_status
+:MedicationStatement_status rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_subject
+:MedicationStatement_subject rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#Observation_code
+:Observation_code rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#Observation_subject
+:Observation_subject rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_identifier
+:ReferralRequest_identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_status
+:ReferralRequest_status rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_subject
+:ReferralRequest_subject rdf:type owl:AnnotationProperty .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_type
+:ReferralRequest_type rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+
+
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://example.org/clinical-onto#AllergyIntolerance_asserter
+:AllergyIntolerance_asserter rdf:type owl:ObjectProperty ;
+                             rdfs:domain :AllergyIntolerance ,
+                                         :Condition ;
+                             rdfs:range :Practitioner ;
+                             rdfs:label "asserter"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_clinicalStatus
+:AllergyIntolerance_clinicalStatus rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :AllergyIntolerance ;
+                                   rdfs:range :AllergyClinicalStatus ;
+                                   rdfs:label "clinicalStatus"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_criticality
+:AllergyIntolerance_criticality rdf:type owl:ObjectProperty ;
+                                rdfs:domain :AllergyIntolerance ;
+                                rdfs:range :AllergyCriticality ;
+                                rdfs:label "criticality"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_reaction
+:AllergyIntolerance_reaction rdf:type owl:ObjectProperty ;
+                             rdfs:domain :AllergyIntolerance ;
+                             rdfs:range :AllergyReaction ;
+                             rdfs:label "reaction"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_type
+:AllergyIntolerance_type rdf:type owl:ObjectProperty ;
+                         rdfs:domain :AllergyIntolerance ;
+                         rdfs:range :AllergyType ;
+                         rdfs:label "type"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_verificationStatus
+:AllergyIntolerance_verificationStatus rdf:type owl:ObjectProperty ;
+                                       rdfs:domain :AllergyIntolerance ;
+                                       rdfs:range :AllergyVerificationStatus ;
+                                       rdfs:label "verificationStatus"@en .
+
+
+###  https://example.org/clinical-onto#AllergyReaction_manifestation
+:AllergyReaction_manifestation rdf:type owl:ObjectProperty ;
+                               rdfs:domain :AllergyReaction ;
+                               rdfs:range :CodeableConcept ;
+                               rdfs:label "manifestation"@en .
+
+
+###  https://example.org/clinical-onto#AllergyReaction_substance
+:AllergyReaction_substance rdf:type owl:ObjectProperty ;
+                           rdfs:domain :AllergyReaction ;
+                           rdfs:range :CodeableConcept ;
+                           rdfs:label "substance"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanActivityDetail_status
+:CarePlanActivityDetail_status rdf:type owl:ObjectProperty ;
+                               rdfs:domain :CarePlanActivityDetail ;
+                               rdfs:range :CarePlanActivityStatus ;
+                               rdfs:label "status"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanActivity_detail
+:CarePlanActivity_detail rdf:type owl:ObjectProperty ;
+                         rdfs:domain :CarePlanActivity ;
+                         rdfs:range :CarePlanActivityDetail ;
+                         rdfs:label "detail"@en .
+
+
+###  https://example.org/clinical-onto#CarePlan_activity
+:CarePlan_activity rdf:type owl:ObjectProperty ;
+                   rdfs:domain :CarePlan ;
+                   rdfs:range :CarePlanActivity ;
+                   rdfs:label "activity"@en .
+
+
+###  https://example.org/clinical-onto#CarePlan_author
+:CarePlan_author rdf:type owl:ObjectProperty ;
+                 rdfs:domain :CarePlan ;
+                 rdfs:range :Practitioner ;
+                 rdfs:label "author"@en .
+
+
+###  https://example.org/clinical-onto#CarePlan_intent
+:CarePlan_intent rdf:type owl:ObjectProperty ;
+                 rdfs:domain :CarePlan ;
+                 rdfs:range :CarePlanIntent ;
+                 rdfs:label "intent"@en .
+
+
+###  https://example.org/clinical-onto#CarePlan_status
+:CarePlan_status rdf:type owl:ObjectProperty ;
+                 rdfs:domain :CarePlan ;
+                 rdfs:range :CarePlanStatus ;
+                 rdfs:label "status"@en .
+
+
+###  https://example.org/clinical-onto#CodeableConcept_coding
+:CodeableConcept_coding rdf:type owl:ObjectProperty ;
+                        rdfs:domain :CodeableConcept ;
+                        rdfs:range :Coding ;
+                        rdfs:label "coding"@en .
+
+
+###  https://example.org/clinical-onto#Condition_category
+:Condition_category rdf:type owl:ObjectProperty ;
+                    rdfs:domain :AllergyIntolerance ,
+                                :CarePlan ,
+                                :Condition ,
+                                :Observation ;
+                    rdfs:range :CodeableConcept ;
+                    rdfs:label "category"@en .
+
+
+###  https://example.org/clinical-onto#Condition_clinicalStatus
+:Condition_clinicalStatus rdf:type owl:ObjectProperty ;
+                          rdfs:domain :Condition ;
+                          rdfs:range :ClinicalStatus ;
+                          rdfs:label "clinicalStatus"@en .
+
+
+###  https://example.org/clinical-onto#Condition_code
+:Condition_code rdf:type owl:ObjectProperty ;
+                rdfs:domain :AllergyIntolerance ,
+                            :CarePlanActivityDetail ,
+                            :Condition ,
+                            :FamilyCondition ,
+                            :Observation ;
+                rdfs:range :CodeableConcept ;
+                rdfs:label "code"@en .
+
+
+###  https://example.org/clinical-onto#Condition_subject
+:Condition_subject rdf:type owl:ObjectProperty ;
+                   rdfs:domain :CarePlan ,
+                               :Condition ,
+                               :Encounter ,
+                               :GuidanceResponse ,
+                               :MedicationStatement ,
+                               :Observation ,
+                               :ReferralRequest ;
+                   rdfs:range :Patient ;
+                   rdfs:label "subject"@en .
+
+
+###  https://example.org/clinical-onto#ContactPoint_system
+:ContactPoint_system rdf:type owl:ObjectProperty ;
+                     rdfs:domain :ContactPoint ;
+                     rdfs:range :ContactPointSystem ;
+                     rdfs:label "system"@en .
+
+
+###  https://example.org/clinical-onto#Dosage_doseQuantity
+:Dosage_doseQuantity rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Dosage ;
+                     rdfs:range :Quantity ;
+                     rdfs:label "doseQuantity"@en .
+
+
+###  https://example.org/clinical-onto#Dosage_route
+:Dosage_route rdf:type owl:ObjectProperty ;
+              rdfs:domain :Dosage ;
+              rdfs:range :CodeableConcept ;
+              rdfs:label "route"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_class
+:Encounter_class rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Encounter ;
+                 rdfs:range :Coding ;
+                 rdfs:label "class"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_period
+:Encounter_period rdf:type owl:ObjectProperty ;
+                  rdfs:domain :CarePlan ,
+                              :Encounter ;
+                  rdfs:range :Period ;
+                  rdfs:label "period"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_priority
+:Encounter_priority rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Encounter ;
+                    rdfs:range :CodeableConcept ;
+                    rdfs:label "priority"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_serviceProvider
+:Encounter_serviceProvider rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Encounter ;
+                           rdfs:range :Organization ;
+                           rdfs:label "serviceProvider"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_status
+:Encounter_status rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Encounter ,
+                              :MedicationStatement ,
+                              :ReferralRequest ;
+                  rdfs:range :EncounterStatus ;
+                  rdfs:label "status"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_type
+:Encounter_type rdf:type owl:ObjectProperty ;
+                rdfs:domain :Encounter ,
+                            :ReferralRequest ;
+                rdfs:range :CodeableConcept ;
+                rdfs:label "type"@en .
+
+
+###  https://example.org/clinical-onto#FamilyCondition_outcome
+:FamilyCondition_outcome rdf:type owl:ObjectProperty ;
+                         rdfs:domain :FamilyCondition ;
+                         rdfs:range :ConditionOutcome ;
+                         rdfs:label "outcome"@en .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory_condition
+:FamilyMemberHistory_condition rdf:type owl:ObjectProperty ;
+                               rdfs:domain :FamilyMemberHistory ;
+                               rdfs:range :Condition ,
+                                          :FamilyCondition ;
+                               rdfs:label "condition"@en ,
+                                          "condition (family member)"@en .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory_gender
+:FamilyMemberHistory_gender rdf:type owl:ObjectProperty ;
+                            rdfs:domain :FamilyMemberHistory ;
+                            rdfs:range :AdministrativeGender ;
+                            rdfs:label "gender"@en .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory_notDoneReason
+:FamilyMemberHistory_notDoneReason rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :FamilyMemberHistory ;
+                                   rdfs:range :NotDoneReason ;
+                                   rdfs:label "notDoneReason"@en .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory_patient
+:FamilyMemberHistory_patient rdf:type owl:ObjectProperty ;
+                             rdfs:domain :AllergyIntolerance ,
+                                         :FamilyMemberHistory ;
+                             rdfs:range :Patient ;
+                             rdfs:label "patient"@en .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory_relationship
+:FamilyMemberHistory_relationship rdf:type owl:ObjectProperty ;
+                                  rdfs:domain :FamilyMemberHistory ;
+                                  rdfs:range :FamilyRelationship ;
+                                  rdfs:label "relationship"@en .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory_status
+:FamilyMemberHistory_status rdf:type owl:ObjectProperty ;
+                            rdfs:domain :FamilyMemberHistory ;
+                            rdfs:range :HistoryStatus ;
+                            rdfs:label "status"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_encounter
+:GuidanceResponse_encounter rdf:type owl:ObjectProperty ;
+                            rdfs:domain :GuidanceResponse ;
+                            rdfs:range :Encounter ;
+                            rdfs:label "encounter"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_note
+:GuidanceResponse_note rdf:type owl:ObjectProperty ;
+                       rdfs:domain :GuidanceResponse ;
+                       rdfs:range :Annotation ;
+                       rdfs:label "note"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_performer
+:GuidanceResponse_performer rdf:type owl:ObjectProperty ;
+                            rdfs:domain :GuidanceResponse ;
+                            rdfs:range :Device ;
+                            rdfs:label "performer"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_reason
+:GuidanceResponse_reason rdf:type owl:ObjectProperty ;
+                         rdfs:domain :GuidanceResponse ;
+                         rdfs:range :Reason ;
+                         rdfs:label "reason"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_status
+:GuidanceResponse_status rdf:type owl:ObjectProperty ;
+                         rdfs:domain :GuidanceResponse ;
+                         rdfs:range :GuidanceResponseStatus ;
+                         rdfs:label "status"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_dosage
+:MedicationStatement_dosage rdf:type owl:ObjectProperty ;
+                            rdfs:domain :MedicationStatement ;
+                            rdfs:range :Dosage ;
+                            rdfs:label "dosage"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_note
+:MedicationStatement_note rdf:type owl:ObjectProperty ;
+                          rdfs:domain :MedicationStatement ;
+                          rdfs:range :Annotation ;
+                          rdfs:label "note"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_taken
+:MedicationStatement_taken rdf:type owl:ObjectProperty ;
+                           rdfs:domain :MedicationStatement ;
+                           rdfs:range :MedicationTakenStatus ;
+                           rdfs:label "taken"@en .
+
+
+###  https://example.org/clinical-onto#Observation_bodySite
+:Observation_bodySite rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Observation ;
+                      rdfs:range :CodeableConcept ;
+                      rdfs:label "bodySite"@en .
+
+
+###  https://example.org/clinical-onto#Observation_interpretation
+:Observation_interpretation rdf:type owl:ObjectProperty ;
+                            rdfs:domain :Observation ;
+                            rdfs:range :CodeableConcept ;
+                            rdfs:label "interpretation"@en .
+
+
+###  https://example.org/clinical-onto#Observation_valueQuantity
+:Observation_valueQuantity rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Observation ;
+                           rdfs:range :Quantity ;
+                           rdfs:label "valueQuantity"@en .
+
+
+###  https://example.org/clinical-onto#Organization_telecom
+:Organization_telecom rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Organization ,
+                                  :Patient ,
+                                  :Practitioner ;
+                      rdfs:range :ContactPoint ;
+                      rdfs:label "telecom"@en .
+
+
+###  https://example.org/clinical-onto#Patient_address
+:Patient_address rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Organization ,
+                             :Patient ;
+                 rdfs:range :Address ;
+                 rdfs:label "address"@en .
+
+
+###  https://example.org/clinical-onto#Patient_generalPractitioner
+:Patient_generalPractitioner rdf:type owl:ObjectProperty ;
+                             rdfs:domain :Patient ;
+                             rdfs:range :Practitioner ;
+                             rdfs:label "generalPractitioner"@en .
+
+
+###  https://example.org/clinical-onto#Patient_managingOrganization
+:Patient_managingOrganization rdf:type owl:ObjectProperty ;
+                              rdfs:domain :Patient ;
+                              rdfs:range :Organization ;
+                              rdfs:label "managingOrganization"@en .
+
+
+###  https://example.org/clinical-onto#Patient_maritalStatus
+:Patient_maritalStatus rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Patient ;
+                       rdfs:range :MaritalStatus ;
+                       rdfs:label "maritalStatus"@en .
+
+
+###  https://example.org/clinical-onto#Patient_name
+:Patient_name rdf:type owl:ObjectProperty ;
+              rdfs:domain :Patient ,
+                          :Practitioner ;
+              rdfs:range :HumanName ;
+              rdfs:label "name"@en .
+
+
+###  https://example.org/clinical-onto#Reason_code
+:Reason_code rdf:type owl:ObjectProperty ;
+             rdfs:domain :Reason ;
+             rdfs:range :CodeableConcept ;
+             rdfs:label "reason.code"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_context
+:ReferralRequest_context rdf:type owl:ObjectProperty ;
+                         rdfs:domain :MedicationStatement ,
+                                     :ReferralRequest ;
+                         rdfs:range :Encounter ;
+                         rdfs:label "context"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_intent
+:ReferralRequest_intent rdf:type owl:ObjectProperty ;
+                        rdfs:domain :ReferralRequest ;
+                        rdfs:range :ReferralRequestIntent ;
+                        rdfs:label "intent"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_reasonCode
+:ReferralRequest_reasonCode rdf:type owl:ObjectProperty ;
+                            rdfs:domain :FamilyMemberHistory ,
+                                        :ReferralRequest ;
+                            rdfs:range :CodeableConcept ;
+                            rdfs:label "reasonCode"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_recipient
+:ReferralRequest_recipient rdf:type owl:ObjectProperty ;
+                           rdfs:domain :ReferralRequest ;
+                           rdfs:range :Organization ;
+                           rdfs:label "recipient"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_requester
+:ReferralRequest_requester rdf:type owl:ObjectProperty ;
+                           rdfs:domain :ReferralRequest ;
+                           rdfs:range :Requester ;
+                           rdfs:label "requester"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_serviceRequested
+:ReferralRequest_serviceRequested rdf:type owl:ObjectProperty ;
+                                  rdfs:domain :ReferralRequest ;
+                                  rdfs:range :CodeableConcept ;
+                                  rdfs:label "serviceRequested"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_specialty
+:ReferralRequest_specialty rdf:type owl:ObjectProperty ;
+                           rdfs:domain :ReferralRequest ;
+                           rdfs:range :CodeableConcept ;
+                           rdfs:label "specialty"@en .
+
+
+###  https://example.org/clinical-onto#Requester_agent
+:Requester_agent rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Requester ;
+                 rdfs:range :Practitioner ;
+                 rdfs:label "agent"@en .
+
+
+###  https://example.org/clinical-onto#Requester_onBehalfOf
+:Requester_onBehalfOf rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Requester ;
+                      rdfs:range :Organization ;
+                      rdfs:label "onBehalfOf"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#capacityToConsent
+<http://www.co-ode.org/ontologies/ont.owl#capacityToConsent> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain :Patient ;
+                                                             rdfs:range xsd:boolean .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#consentToText
+<http://www.co-ode.org/ontologies/ont.owl#consentToText> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:domain :Patient ;
+                                                         rdfs:range xsd:boolean .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#end
+<http://www.co-ode.org/ontologies/ont.owl#end> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain :Period ;
+                                               rdfs:range xsd:dateTime .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#ethnicCategory
+<http://www.co-ode.org/ontologies/ont.owl#ethnicCategory> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:domain :Patient ;
+                                                          rdfs:range xsd:string .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#familyName
+<http://www.co-ode.org/ontologies/ont.owl#familyName> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:range xsd:string .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#givenName
+<http://www.co-ode.org/ontologies/ont.owl#givenName> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                     rdfs:range xsd:string .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#interpreterRequired
+<http://www.co-ode.org/ontologies/ont.owl#interpreterRequired> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:domain :Patient ;
+                                                               rdfs:range xsd:boolean .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#language
+<http://www.co-ode.org/ontologies/ont.owl#language> rdf:type owl:DatatypeProperty ;
+                                                    rdfs:domain :Patient ;
+                                                    rdfs:range xsd:string .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#nhsNumber
+<http://www.co-ode.org/ontologies/ont.owl#nhsNumber> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                     rdfs:domain :Patient ;
+                                                     rdfs:range xsd:string .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#organisationCode
+<http://www.co-ode.org/ontologies/ont.owl#organisationCode> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                                            rdfs:domain :Organization ;
+                                                            rdfs:range xsd:string .
+
+
+###  https://example.org/clinical-onto#Address_city
+:Address_city rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Address ;
+              rdfs:range xsd:string ;
+              rdfs:label "city"@en .
+
+
+###  https://example.org/clinical-onto#Address_district
+:Address_district rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Address ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "district"@en .
+
+
+###  https://example.org/clinical-onto#Address_line
+:Address_line rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Address ;
+              rdfs:range xsd:string ;
+              rdfs:label "line"@en .
+
+
+###  https://example.org/clinical-onto#Address_postalCode
+:Address_postalCode rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Address ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "postalCode"@en .
+
+
+###  https://example.org/clinical-onto#Address_text
+:Address_text rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Address ,
+                          :Annotation ,
+                          :CodeableConcept ,
+                          :HumanName ;
+              rdfs:range xsd:string ;
+              rdfs:label "text"@en .
+
+
+###  https://example.org/clinical-onto#Address_type
+:Address_type rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Address ;
+              rdfs:range xsd:string ;
+              rdfs:label "type"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_assertedDate
+:AllergyIntolerance_assertedDate rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain :AllergyIntolerance ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "assertedDate"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_lastOccurrence
+:AllergyIntolerance_lastOccurrence rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain :AllergyIntolerance ;
+                                   rdfs:range xsd:dateTime ;
+                                   rdfs:label "lastOccurrence"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance_onsetDateTime
+:AllergyIntolerance_onsetDateTime rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain :AllergyIntolerance ;
+                                  rdfs:range xsd:dateTime ;
+                                  rdfs:label "onsetDateTime"@en .
+
+
+###  https://example.org/clinical-onto#AllergyReaction_onset
+:AllergyReaction_onset rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :AllergyReaction ;
+                       rdfs:range xsd:dateTime ;
+                       rdfs:label "onset"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanActivityDetail_description
+:CarePlanActivityDetail_description rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain :CarePlanActivityDetail ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "description"@en .
+
+
+###  https://example.org/clinical-onto#Coding_code
+:Coding_code rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Coding ,
+                         :Quantity ;
+             rdfs:range xsd:string ;
+             rdfs:label "code"@en .
+
+
+###  https://example.org/clinical-onto#Coding_display
+:Coding_display rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Coding ;
+                rdfs:range xsd:string ;
+                rdfs:label "display"@en .
+
+
+###  https://example.org/clinical-onto#Coding_system
+:Coding_system rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Coding ,
+                           :Quantity ;
+               rdfs:range xsd:anyURI ;
+               rdfs:label "system"@en .
+
+
+###  https://example.org/clinical-onto#Condition_assertedDate
+:Condition_assertedDate rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Condition ;
+                        rdfs:range xsd:dateTime ;
+                        rdfs:label "assertedDate"@en .
+
+
+###  https://example.org/clinical-onto#Condition_onsetDateTime
+:Condition_onsetDateTime rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Condition ;
+                         rdfs:range xsd:dateTime ;
+                         rdfs:label "onsetDateTime"@en .
+
+
+###  https://example.org/clinical-onto#ContactPoint_value
+:ContactPoint_value rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :ContactPoint ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "value"@en .
+
+
+###  https://example.org/clinical-onto#Dosage_asNeededBoolean
+:Dosage_asNeededBoolean rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Dosage ;
+                        rdfs:range xsd:boolean ;
+                        rdfs:label "asNeededBoolean"@en .
+
+
+###  https://example.org/clinical-onto#Encounter_episodeOfCareRef
+:Encounter_episodeOfCareRef rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :Encounter ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "episodeOfCare.reference"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_evaluationMessageRef
+:GuidanceResponse_evaluationMessageRef rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain :GuidanceResponse ;
+                                       rdfs:range xsd:string ;
+                                       rdfs:label "evaluationMessage.reference"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_moduleUri
+:GuidanceResponse_moduleUri rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :GuidanceResponse ;
+                            rdfs:range xsd:anyURI ;
+                            rdfs:label "moduleUri"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_occurrenceDateTime
+:GuidanceResponse_occurrenceDateTime rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain :GuidanceResponse ;
+                                     rdfs:range xsd:dateTime ;
+                                     rdfs:label "occurrenceDateTime"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_outputParametersRef
+:GuidanceResponse_outputParametersRef rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain :GuidanceResponse ;
+                                      rdfs:range xsd:string ;
+                                      rdfs:label "outputParameters.reference"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse_resultRef
+:GuidanceResponse_resultRef rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :GuidanceResponse ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "result.reference"@en .
+
+
+###  https://example.org/clinical-onto#HumanName_family
+:HumanName_family rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :HumanName ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "family"@en .
+
+
+###  https://example.org/clinical-onto#HumanName_given
+:HumanName_given rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :HumanName ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "given"@en .
+
+
+###  https://example.org/clinical-onto#HumanName_prefix
+:HumanName_prefix rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :HumanName ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "prefix"@en .
+
+
+###  https://example.org/clinical-onto#HumanName_suffix
+:HumanName_suffix rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :HumanName ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "suffix"@en .
+
+
+###  https://example.org/clinical-onto#HumanName_use
+:HumanName_use rdf:type owl:DatatypeProperty ;
+               rdfs:domain :HumanName ;
+               rdfs:range xsd:string ;
+               rdfs:label "use"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_dateAsserted
+:MedicationStatement_dateAsserted rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain :MedicationStatement ;
+                                  rdfs:range xsd:dateTime ;
+                                  rdfs:label "dateAsserted"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_effectiveDateTime
+:MedicationStatement_effectiveDateTime rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain :MedicationStatement ;
+                                       rdfs:range xsd:dateTime ;
+                                       rdfs:label "effectiveDateTime"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement_medicationReference
+:MedicationStatement_medicationReference rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain :MedicationStatement ;
+                                         rdfs:range xsd:string ;
+                                         rdfs:label "medicationReference.reference"@en .
+
+
+###  https://example.org/clinical-onto#Observation_effectiveDateTime
+:Observation_effectiveDateTime rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :Observation ;
+                               rdfs:range xsd:dateTime ;
+                               rdfs:label "effectiveDateTime"@en .
+
+
+###  https://example.org/clinical-onto#Observation_status
+:Observation_status rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Observation ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "status"@en .
+
+
+###  https://example.org/clinical-onto#Organization_active
+:Organization_active rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Organization ,
+                                 :Patient ,
+                                 :Practitioner ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "active"@en .
+
+
+###  https://example.org/clinical-onto#Organization_id
+:Organization_id rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :AllergyIntolerance ,
+                             :CarePlan ,
+                             :Condition ,
+                             :Encounter ,
+                             :FamilyMemberHistory ,
+                             :GuidanceResponse ,
+                             :MedicationStatement ,
+                             :Observation ,
+                             :Organization ,
+                             :Patient ,
+                             :Practitioner ,
+                             :ReferralRequest ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "id"@en .
+
+
+###  https://example.org/clinical-onto#Organization_name
+:Organization_name rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Organization ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "name"@en .
+
+
+###  https://example.org/clinical-onto#Patient_birthDate
+:Patient_birthDate rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Patient ;
+                   rdfs:range xsd:date ;
+                   rdfs:label "birthDate"@en .
+
+
+###  https://example.org/clinical-onto#Period_start
+:Period_start rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Period ;
+              rdfs:range xsd:dateTime ;
+              rdfs:label "start"@en .
+
+
+###  https://example.org/clinical-onto#Practitioner_gender
+:Practitioner_gender rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Patient ,
+                                 :Practitioner ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "gender"@en .
+
+
+###  https://example.org/clinical-onto#Practitioner_name
+:Practitioner_name rdf:type owl:DatatypeProperty ;
+                   rdfs:range :HumanName .
+
+
+###  https://example.org/clinical-onto#Quantity_unit
+:Quantity_unit rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Quantity ;
+               rdfs:range xsd:string ;
+               rdfs:label "unit"@en .
+
+
+###  https://example.org/clinical-onto#Quantity_value
+:Quantity_value rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Quantity ;
+                rdfs:range xsd:decimal ;
+                rdfs:label "value"@en .
+
+
+###  https://example.org/clinical-onto#Reason_reference
+:Reason_reference rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Reason ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "reason.reference"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest_authoredOn
+:ReferralRequest_authoredOn rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :ReferralRequest ;
+                            rdfs:range xsd:dateTime ;
+                            rdfs:label "authoredOn"@en .
+
+
+###  https://example.org/clinical-onto#maritalStatusCode
+:maritalStatusCode rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :MaritalStatus ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "maritalStatusCode"@en .
+
+
+###  https://example.org/clinical-onto#nullFlavorCode
+:nullFlavorCode rdf:type owl:DatatypeProperty ;
+                rdfs:domain :NullFlavor ;
+                rdfs:range xsd:string ;
+                rdfs:label "nullFlavorCode"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#FamilyHistoryCondition
+<http://www.co-ode.org/ontologies/ont.owl#FamilyHistoryCondition> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf :Condition .
+
+
+###  https://example.org/clinical-onto#Address
+:Address rdf:type owl:Class ;
+         rdfs:label "Address"@en .
+
+
+###  https://example.org/clinical-onto#AdministrativeGender
+:AdministrativeGender rdf:type owl:Class ;
+                      rdfs:comment "Based on CareConnect-AdministrativeGender value set"@en ;
+                      rdfs:label "AdministrativeGender"@en .
+
+
+###  https://example.org/clinical-onto#AllergyCategory
+:AllergyCategory rdf:type owl:Class ;
+                 rdfs:subClassOf :AllergyIntolerance ;
+                 rdfs:label "AllergyIntolerance.category"@en .
+
+
+###  https://example.org/clinical-onto#AllergyClinicalStatus
+:AllergyClinicalStatus rdf:type owl:Class ;
+                       rdfs:subClassOf :AllergyIntolerance ;
+                       rdfs:label "AllergyIntolerance.clinicalStatus"@en .
+
+
+###  https://example.org/clinical-onto#AllergyCriticality
+:AllergyCriticality rdf:type owl:Class ;
+                    rdfs:subClassOf :AllergyIntolerance ;
+                    rdfs:label "AllergyIntolerance.criticality"@en .
+
+
+###  https://example.org/clinical-onto#AllergyIntolerance
+:AllergyIntolerance rdf:type owl:Class ;
+                    rdfs:label "AllergyIntolerance"@en .
+
+
+###  https://example.org/clinical-onto#AllergyReaction
+:AllergyReaction rdf:type owl:Class ;
+                 rdfs:subClassOf :AllergyIntolerance ;
+                 rdfs:label "AllergyIntolerance.reaction"@en .
+
+
+###  https://example.org/clinical-onto#AllergyType
+:AllergyType rdf:type owl:Class ;
+             rdfs:subClassOf :AllergyIntolerance ;
+             rdfs:label "AllergyIntolerance.type"@en .
+
+
+###  https://example.org/clinical-onto#AllergyVerificationStatus
+:AllergyVerificationStatus rdf:type owl:Class ;
+                           rdfs:subClassOf :AllergyIntolerance ;
+                           rdfs:label "AllergyIntolerance.verificationStatus"@en .
+
+
+###  https://example.org/clinical-onto#Annotation
+:Annotation rdf:type owl:Class ;
+            rdfs:label "Annotation"@en .
+
+
+###  https://example.org/clinical-onto#CarePlan
+:CarePlan rdf:type owl:Class ;
+          rdfs:label "CarePlan"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanActivity
+:CarePlanActivity rdf:type owl:Class ;
+                  rdfs:subClassOf :CarePlan ;
+                  rdfs:label "CarePlan.activity"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanActivityDetail
+:CarePlanActivityDetail rdf:type owl:Class ;
+                        rdfs:subClassOf :CarePlan ;
+                        rdfs:label "CarePlan.activity.detail"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanActivityStatus
+:CarePlanActivityStatus rdf:type owl:Class ;
+                        rdfs:subClassOf :CarePlan ;
+                        rdfs:label "CarePlan.activity.detail.status"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanIntent
+:CarePlanIntent rdf:type owl:Class ;
+                rdfs:subClassOf :CarePlan ;
+                rdfs:label "CarePlan.intent"@en .
+
+
+###  https://example.org/clinical-onto#CarePlanStatus
+:CarePlanStatus rdf:type owl:Class ;
+                rdfs:subClassOf :CarePlan ;
+                rdfs:label "CarePlan.status"@en .
+
+
+###  https://example.org/clinical-onto#ClinicalStatus
+:ClinicalStatus rdf:type owl:Class ;
+                rdfs:comment "FHIR STU3 Condition.clinicalStatus"@en ;
+                rdfs:label "ClinicalStatus"@en .
+
+
+###  https://example.org/clinical-onto#CodeableConcept
+:CodeableConcept rdf:type owl:Class ;
+                 rdfs:label "CodeableConcept"@en .
+
+
+###  https://example.org/clinical-onto#Coding
+:Coding rdf:type owl:Class ;
+        rdfs:label "Coding"@en .
+
+
+###  https://example.org/clinical-onto#Condition
+:Condition rdf:type owl:Class ;
+           rdfs:label "Condition"@en .
+
+
+###  https://example.org/clinical-onto#ConditionOutcome
+:ConditionOutcome rdf:type owl:Class ;
+                  rdfs:subClassOf :FamilyMemberHistory ;
+                  rdfs:comment "Based on http://hl7.org/fhir/stu3/valueset-condition-outcome.html"@en ;
+                  rdfs:label "FamilyMemberHistory.condition.outcome"@en .
+
+
+###  https://example.org/clinical-onto#ContactPoint
+:ContactPoint rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :ContactPoint_system ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :ContactPointSystem
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :ContactPoint_value ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+              rdfs:comment "Minimal ContactPoint for clinical communication."@en ;
+              rdfs:label "ContactPoint"@en .
+
+
+###  https://example.org/clinical-onto#ContactPointSystem
+:ContactPointSystem rdf:type owl:Class ;
+                    rdfs:label "ContactPoint.system"@en .
+
+
+###  https://example.org/clinical-onto#Device
+:Device rdf:type owl:Class ;
+        rdfs:label "Device"@en .
+
+
+###  https://example.org/clinical-onto#Dosage
+:Dosage rdf:type owl:Class ;
+        rdfs:label "Dosage"@en .
+
+
+###  https://example.org/clinical-onto#Encounter
+:Encounter rdf:type owl:Class ;
+           rdfs:label "Encounter"@en .
+
+
+###  https://example.org/clinical-onto#EncounterStatus
+:EncounterStatus rdf:type owl:Class ;
+                 rdfs:subClassOf :Encounter ;
+                 rdfs:comment "FHIR STU3 Encounter.status"@en ;
+                 rdfs:label "EncounterStatus"@en .
+
+
+###  https://example.org/clinical-onto#FamilyCondition
+:FamilyCondition rdf:type owl:Class ;
+                 rdfs:subClassOf :FamilyMemberHistory .
+
+
+###  https://example.org/clinical-onto#FamilyMemberHistory
+:FamilyMemberHistory rdf:type owl:Class ;
+                     rdfs:label "FamilyMemberHistory"@en .
+
+
+###  https://example.org/clinical-onto#FamilyRelationship
+:FamilyRelationship rdf:type owl:Class ;
+                    rdfs:subClassOf :FamilyMemberHistory ;
+                    rdfs:comment "Based on http://hl7.org/fhir/stu3/v3/FamilyMember/vs.html"@en ;
+                    rdfs:label "FamilyRelationship"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponse
+:GuidanceResponse rdf:type owl:Class ;
+                  rdfs:label "GuidanceResponse"@en .
+
+
+###  https://example.org/clinical-onto#GuidanceResponseStatus
+:GuidanceResponseStatus rdf:type owl:Class ;
+                        rdfs:subClassOf :GuidanceResponse ;
+                        rdfs:comment "success | data-requested | data-required | in-progress | failure | entered-in-error"@en ;
+                        rdfs:label "GuidanceResponse.status"@en .
+
+
+###  https://example.org/clinical-onto#HistoryStatus
+:HistoryStatus rdf:type owl:Class ;
+               rdfs:subClassOf :FamilyMemberHistory ;
+               rdfs:comment "Based on http://hl7.org/fhir/stu3/valueset-history-status.html"@en ;
+               rdfs:label "FamilyMemberHistory.status"@en .
+
+
+###  https://example.org/clinical-onto#HumanName
+:HumanName rdf:type owl:Class ;
+           rdfs:label "HumanName"@en .
+
+
+###  https://example.org/clinical-onto#MaritalStatus
+:MaritalStatus rdf:type owl:Class ;
+               rdfs:comment "FHIR v3 MaritalStatus code system"@en ;
+               rdfs:label "MaritalStatus"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatement
+:MedicationStatement rdf:type owl:Class ;
+                     rdfs:label "MedicationStatement"@en .
+
+
+###  https://example.org/clinical-onto#MedicationStatementStatus
+:MedicationStatementStatus rdf:type owl:Class ;
+                           rdfs:subClassOf :MedicationStatement ;
+                           rdfs:comment "FHIR STU3 MedicationStatement.status"@en ;
+                           rdfs:label "MedicationStatementStatus"@en .
+
+
+###  https://example.org/clinical-onto#MedicationTakenStatus
+:MedicationTakenStatus rdf:type owl:Class ;
+                       rdfs:subClassOf :MedicationStatement ;
+                       rdfs:comment "FHIR STU3 MedicationStatement.taken: y | n | unk | na"@en ;
+                       rdfs:label "MedicationStatement.taken"@en .
+
+
+###  https://example.org/clinical-onto#NotDoneReason
+:NotDoneReason rdf:type owl:Class ;
+               rdfs:subClassOf :FamilyMemberHistory ;
+               rdfs:comment "Based on http://hl7.org/fhir/stu3/valueset-history-not-done-reason.html"@en ;
+               rdfs:label "FamilyMemberHistory.notDoneReason"@en .
+
+
+###  https://example.org/clinical-onto#NullFlavor
+:NullFlavor rdf:type owl:Class ;
+            rdfs:comment "FHIR v3 NullFlavor codes"@en ;
+            rdfs:label "NullFlavor"@en .
+
+
+###  https://example.org/clinical-onto#Observation
+:Observation rdf:type owl:Class ;
+             rdfs:label "Observation"@en .
+
+
+###  https://example.org/clinical-onto#Organization
+:Organization rdf:type owl:Class ;
+              rdfs:label "Organization"@en .
+
+
+###  https://example.org/clinical-onto#Patient
+:Patient rdf:type owl:Class ;
+         rdfs:label "Patient"@en .
+
+
+###  https://example.org/clinical-onto#Period
+:Period rdf:type owl:Class .
+
+
+###  https://example.org/clinical-onto#Practitioner
+:Practitioner rdf:type owl:Class ;
+              rdfs:label "Practitioner"@en .
+
+
+###  https://example.org/clinical-onto#Quantity
+:Quantity rdf:type owl:Class ;
+          rdfs:label "Quantity"@en .
+
+
+###  https://example.org/clinical-onto#Reason
+:Reason rdf:type owl:Class ;
+        rdfs:subClassOf :GuidanceResponse ;
+        rdfs:label "GuidanceResponse.reason"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequest
+:ReferralRequest rdf:type owl:Class .
+
+
+###  https://example.org/clinical-onto#ReferralRequestIntent
+:ReferralRequestIntent rdf:type owl:Class ;
+                       rdfs:subClassOf :ReferralRequest ;
+                       rdfs:label "ReferralRequest.intent"@en .
+
+
+###  https://example.org/clinical-onto#ReferralRequestStatus
+:ReferralRequestStatus rdf:type owl:Class ;
+                       rdfs:subClassOf :ReferralRequest ;
+                       rdfs:label "ReferralRequest.status"@en .
+
+
+###  https://example.org/clinical-onto#Requester
+:Requester rdf:type owl:Class ;
+           rdfs:subClassOf :ReferralRequest ;
+           rdfs:label "ReferralRequest.requester"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://example.org/clinical-onto#Annulled
+:Annulled rdf:type owl:NamedIndividual ,
+                   :MaritalStatus ;
+          :maritalStatusCode "A" ;
+          rdfs:label "Annulled"@en .
+
+
+###  https://example.org/clinical-onto#Divorced
+:Divorced rdf:type owl:NamedIndividual ,
+                   :MaritalStatus ;
+          :maritalStatusCode "D" ;
+          rdfs:label "Divorced"@en .
+
+
+###  https://example.org/clinical-onto#DomesticPartner
+:DomesticPartner rdf:type owl:NamedIndividual ,
+                          :MaritalStatus ;
+                 :maritalStatusCode "T" ;
+                 rdfs:label "Domestic Partner"@en .
+
+
+###  https://example.org/clinical-onto#Interlocutory
+:Interlocutory rdf:type owl:NamedIndividual ,
+                        :MaritalStatus ;
+               :maritalStatusCode "I" ;
+               rdfs:label "Interlocutory"@en .
+
+
+###  https://example.org/clinical-onto#LegallySeparated
+:LegallySeparated rdf:type owl:NamedIndividual ,
+                           :MaritalStatus ;
+                  :maritalStatusCode "L" ;
+                  rdfs:label "Legally Separated"@en .
+
+
+###  https://example.org/clinical-onto#Married
+:Married rdf:type owl:NamedIndividual ,
+                  :MaritalStatus ;
+         :maritalStatusCode "M" ;
+         rdfs:label "Married"@en .
+
+
+###  https://example.org/clinical-onto#NeverMarried
+:NeverMarried rdf:type owl:NamedIndividual ,
+                       :MaritalStatus ;
+              :maritalStatusCode "S" ;
+              rdfs:label "Never Married"@en .
+
+
+###  https://example.org/clinical-onto#Polygamous
+:Polygamous rdf:type owl:NamedIndividual ,
+                     :MaritalStatus ;
+            :maritalStatusCode "P" ;
+            rdfs:label "Polygamous"@en .
+
+
+###  https://example.org/clinical-onto#Unknown
+:Unknown rdf:type owl:NamedIndividual ,
+                  :NullFlavor ;
+         :nullFlavorCode "UNK" ;
+         rdfs:label "Unknown"@en .
+
+
+###  https://example.org/clinical-onto#Unmarried
+:Unmarried rdf:type owl:NamedIndividual ,
+                    :MaritalStatus ;
+           :maritalStatusCode "U" ;
+           rdfs:label "Unmarried"@en .
+
+
+###  https://example.org/clinical-onto#Widowed
+:Widowed rdf:type owl:NamedIndividual ,
+                  :MaritalStatus ;
+         :maritalStatusCode "W" ;
+         rdfs:label "Widowed"@en .
+
+
+###  https://example.org/clinical-onto#active
+:active rdf:type owl:NamedIndividual ,
+                 :AllergyClinicalStatus ,
+                 :CarePlanStatus ,
+                 :ClinicalStatus ,
+                 :MedicationStatementStatus ,
+                 :ReferralRequestStatus ;
+        rdfs:label "active"@en .
+
+
+###  https://example.org/clinical-onto#all1
+:all1 rdf:type owl:NamedIndividual ,
+               :AllergyIntolerance ;
+      :AllergyIntolerance_asserter :pract1 ;
+      :AllergyIntolerance_clinicalStatus :active ;
+      :AllergyIntolerance_criticality :high ;
+      :AllergyIntolerance_reaction :rx1 ;
+      :AllergyIntolerance_type :allergy ;
+      :AllergyIntolerance_verificationStatus :confirmed ;
+      :AllergyIntolerance_assertedDate "2014-10-09T14:58:00+00:00"^^xsd:dateTime ;
+      :AllergyIntolerance_lastOccurrence "2012-06-01T00:00:00+00:00"^^xsd:dateTime ;
+      :AllergyIntolerance_onsetDateTime "2012-06-12T00:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#all1_code
+:all1_code rdf:type owl:NamedIndividual ,
+                    :CodeableConcept ;
+           :CodeableConcept_coding :all1_code_coding .
+
+
+###  https://example.org/clinical-onto#all1_code_coding
+:all1_code_coding rdf:type owl:NamedIndividual ,
+                           :Coding ;
+                  :Coding_code "1660001" ;
+                  :Coding_display "Plant seeds" ;
+                  :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#allergy
+:allergy rdf:type owl:NamedIndividual ,
+                  :AllergyType ;
+         rdfs:label "allergy"@en .
+
+
+###  https://example.org/clinical-onto#arrived
+:arrived rdf:type owl:NamedIndividual ,
+                  :EncounterStatus ;
+         rdfs:label "arrived"@en .
+
+
+###  https://example.org/clinical-onto#biologic
+:biologic rdf:type owl:NamedIndividual ,
+                   :AllergyCategory ;
+          rdfs:label "biologic"@en .
+
+
+###  https://example.org/clinical-onto#bodyCoding
+:bodyCoding rdf:type owl:NamedIndividual ,
+                     :Coding ;
+            :Coding_code "368209003" ;
+            :Coding_display "Right arm" ;
+            :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#bpCoding
+:bpCoding rdf:type owl:NamedIndividual ,
+                   :Coding ;
+          :Coding_code "163030003" ;
+          :Coding_display "Systolic BP reading" ;
+          :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#brother
+:brother rdf:type owl:NamedIndividual ,
+                  :FamilyRelationship ;
+         rdfs:label "brother"@en .
+
+
+###  https://example.org/clinical-onto#cancelled
+:cancelled rdf:type owl:NamedIndividual ,
+                    :EncounterStatus ,
+                    :ReferralRequestStatus ;
+           rdfs:label "cancelled"@en .
+
+
+###  https://example.org/clinical-onto#cancelled_act
+:cancelled_act rdf:type owl:NamedIndividual ,
+                        :CarePlanActivityStatus ;
+               rdfs:label "cancelled"@en .
+
+
+###  https://example.org/clinical-onto#catCoding
+:catCoding rdf:type owl:NamedIndividual ,
+                    :Coding ;
+           :Coding_code "vital-signs" ;
+           :Coding_display "Vital Signs" ;
+           :Coding_system "http://hl7.org/fhir/observation-category"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#completed
+:completed rdf:type owl:NamedIndividual ,
+                    :CarePlanStatus ,
+                    :HistoryStatus ,
+                    :MedicationStatementStatus ,
+                    :ReferralRequestStatus ;
+           rdfs:label "completed"@en .
+
+
+###  https://example.org/clinical-onto#completed_act
+:completed_act rdf:type owl:NamedIndividual ,
+                        :CarePlanActivityStatus ;
+               rdfs:label "completed"@en .
+
+
+###  https://example.org/clinical-onto#cond_bowel_habit
+:cond_bowel_habit rdf:type owl:NamedIndividual ,
+                           :Condition ;
+                  :Condition_clinicalStatus :active ;
+                  :Condition_code :cond_bowel_habit_code ;
+                  :Condition_subject :patienta ;
+                  :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                  :Condition_onsetDateTime "2024-08-01T00:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_bowel_habit_code
+:cond_bowel_habit_code rdf:type owl:NamedIndividual ,
+                                :CodeableConcept ;
+                       :CodeableConcept_coding :cond_bowel_habit_coding .
+
+
+###  https://example.org/clinical-onto#cond_bowel_habit_coding
+:cond_bowel_habit_coding rdf:type owl:NamedIndividual ,
+                                  :Coding ;
+                         :Coding_code "62315008" ;
+                         :Coding_display "Change in bowel habit" ;
+                         :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_diabetes
+:cond_diabetes rdf:type owl:NamedIndividual ,
+                        :Condition ;
+               :Condition_clinicalStatus :active ;
+               :Condition_code :cond_diabetes_code ;
+               :Condition_subject :patienta ;
+               :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_diabetes_code
+:cond_diabetes_code rdf:type owl:NamedIndividual ,
+                             :CodeableConcept ;
+                    :CodeableConcept_coding :cond_diabetes_coding .
+
+
+###  https://example.org/clinical-onto#cond_diabetes_coding
+:cond_diabetes_coding rdf:type owl:NamedIndividual ,
+                               :Coding ;
+                      :Coding_code "44054006" ;
+                      :Coding_display "Diabetes mellitus type 2" ;
+                      :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_diverticulitis
+:cond_diverticulitis rdf:type owl:NamedIndividual ,
+                              :Condition ;
+                     :Condition_clinicalStatus :resolved ;
+                     :Condition_code :cond_diverticulitis_code ;
+                     :Condition_subject :patienta ;
+                     :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                     :Condition_onsetDateTime "2019-11-01T00:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_diverticulitis_code
+:cond_diverticulitis_code rdf:type owl:NamedIndividual ,
+                                   :CodeableConcept ;
+                          :CodeableConcept_coding :cond_diverticulitis_coding .
+
+
+###  https://example.org/clinical-onto#cond_diverticulitis_coding
+:cond_diverticulitis_coding rdf:type owl:NamedIndividual ,
+                                     :Coding ;
+                            :Coding_code "60468000" ;
+                            :Coding_display "Diverticulitis of sigmoid colon" ;
+                            :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_hypertension
+:cond_hypertension rdf:type owl:NamedIndividual ,
+                            :Condition ;
+                   :Condition_clinicalStatus :active ;
+                   :Condition_code :cond_hypertension_code ;
+                   :Condition_subject :patienta ;
+                   :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_hypertension_code
+:cond_hypertension_code rdf:type owl:NamedIndividual ,
+                                 :CodeableConcept ;
+                        :CodeableConcept_coding :cond_hypertension_coding .
+
+
+###  https://example.org/clinical-onto#cond_hypertension_coding
+:cond_hypertension_coding rdf:type owl:NamedIndividual ,
+                                   :Coding ;
+                          :Coding_code "38341003" ;
+                          :Coding_display "Hypertensive disorder" ;
+                          :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_hypothyroidism
+:cond_hypothyroidism rdf:type owl:NamedIndividual ,
+                              :Condition ;
+                     :Condition_clinicalStatus :active ;
+                     :Condition_code :cond_hypothyroidism_code ;
+                     :Condition_subject :patienta ;
+                     :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_hypothyroidism_code
+:cond_hypothyroidism_code rdf:type owl:NamedIndividual ,
+                                   :CodeableConcept ;
+                          :CodeableConcept_coding :cond_hypothyroidism_coding .
+
+
+###  https://example.org/clinical-onto#cond_hypothyroidism_coding
+:cond_hypothyroidism_coding rdf:type owl:NamedIndividual ,
+                                     :Coding ;
+                            :Coding_code "40930008" ;
+                            :Coding_display "Hypothyroidism" ;
+                            :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_ida
+:cond_ida rdf:type owl:NamedIndividual ,
+                   :Condition ;
+          :Condition_clinicalStatus :active ;
+          :Condition_code :cond_ida_code ;
+          :Condition_subject :patienta ;
+          :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_ida_code
+:cond_ida_code rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :cond_ida_coding .
+
+
+###  https://example.org/clinical-onto#cond_ida_coding
+:cond_ida_coding rdf:type owl:NamedIndividual ,
+                          :Coding ;
+                 :Coding_code "84094000" ;
+                 :Coding_display "Iron deficiency anaemia" ;
+                 :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_osteoarthritis
+:cond_osteoarthritis rdf:type owl:NamedIndividual ,
+                              :Condition ;
+                     :Condition_clinicalStatus :active ;
+                     :Condition_code :cond_osteoarthritis_code ;
+                     :Condition_subject :patienta ;
+                     :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_osteoarthritis_code
+:cond_osteoarthritis_code rdf:type owl:NamedIndividual ,
+                                   :CodeableConcept ;
+                          :CodeableConcept_coding :cond_osteoarthritis_coding .
+
+
+###  https://example.org/clinical-onto#cond_osteoarthritis_coding
+:cond_osteoarthritis_coding rdf:type owl:NamedIndividual ,
+                                     :Coding ;
+                            :Coding_code "396275006" ;
+                            :Coding_display "Osteoarthritis of knee" ;
+                            :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_rectal_bleeding
+:cond_rectal_bleeding rdf:type owl:NamedIndividual ,
+                               :Condition ;
+                      :Condition_clinicalStatus :active ;
+                      :Condition_code :cond_rectal_bleeding_code ;
+                      :Condition_subject :patienta ;
+                      :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                      :Condition_onsetDateTime "2024-08-01T00:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_rectal_bleeding_code
+:cond_rectal_bleeding_code rdf:type owl:NamedIndividual ,
+                                    :CodeableConcept ;
+                           :CodeableConcept_coding :cond_rectal_bleeding_coding .
+
+
+###  https://example.org/clinical-onto#cond_rectal_bleeding_coding
+:cond_rectal_bleeding_coding rdf:type owl:NamedIndividual ,
+                                      :Coding ;
+                             :Coding_code "62315008" ;
+                             :Coding_display "Rectal bleeding" ;
+                             :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cond_weight_loss
+:cond_weight_loss rdf:type owl:NamedIndividual ,
+                           :Condition ;
+                  :Condition_clinicalStatus :active ;
+                  :Condition_code :cond_weight_loss_code ;
+                  :Condition_subject :patienta ;
+                  :Condition_assertedDate "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                  :Condition_onsetDateTime "2024-07-01T00:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#cond_weight_loss_code
+:cond_weight_loss_code rdf:type owl:NamedIndividual ,
+                                :CodeableConcept ;
+                       :CodeableConcept_coding :cond_weight_loss_coding .
+
+
+###  https://example.org/clinical-onto#cond_weight_loss_coding
+:cond_weight_loss_coding rdf:type owl:NamedIndividual ,
+                                  :Coding ;
+                         :Coding_code "161832001" ;
+                         :Coding_display "Unintentional weight loss" ;
+                         :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#confirmed
+:confirmed rdf:type owl:NamedIndividual ,
+                    :AllergyVerificationStatus ;
+           rdfs:label "confirmed"@en .
+
+
+###  https://example.org/clinical-onto#cp1
+:cp1 rdf:type owl:NamedIndividual ,
+              :CarePlan ;
+     :CarePlan_activity :cp1_act1 ,
+                        :cp1_act2 ,
+                        :cp1_act3 ;
+     :CarePlan_author :pract202214 ;
+     :CarePlan_intent :plan ;
+     :CarePlan_status :active ;
+     :CarePlan_identifier :cp1_id .
+
+
+###  https://example.org/clinical-onto#cp1_act1
+:cp1_act1 rdf:type owl:NamedIndividual ,
+                   :CarePlanActivity ;
+          :CarePlanActivity_detail :cp1_act1_detail .
+
+
+###  https://example.org/clinical-onto#cp1_act1_code
+:cp1_act1_code rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :cp1_act1_coding .
+
+
+###  https://example.org/clinical-onto#cp1_act1_coding
+:cp1_act1_coding rdf:type owl:NamedIndividual ,
+                          :Coding ;
+                 :Coding_code "445141005" ;
+                 :Coding_display "Nebuliser therapy using mask" ;
+                 :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cp1_act1_detail
+:cp1_act1_detail rdf:type owl:NamedIndividual ,
+                          :CarePlanActivityDetail ;
+                 :CarePlanActivityDetail_status :not_started ;
+                 :CarePlanActivityDetail_description "Nebulizer can be used to make patient more comfortable" .
+
+
+###  https://example.org/clinical-onto#cp1_act2
+:cp1_act2 rdf:type owl:NamedIndividual ,
+                   :CarePlanActivity ;
+          :CarePlanActivity_detail :cp1_act2_detail .
+
+
+###  https://example.org/clinical-onto#cp1_act2_code
+:cp1_act2_code rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :cp1_act2_coding .
+
+
+###  https://example.org/clinical-onto#cp1_act2_coding
+:cp1_act2_coding rdf:type owl:NamedIndividual ,
+                          :Coding ;
+                 :Coding_code "735324008" ;
+                 :Coding_display "Treatment escalation plan" ;
+                 :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cp1_act2_detail
+:cp1_act2_detail rdf:type owl:NamedIndividual ,
+                          :CarePlanActivityDetail ;
+                 :CarePlanActivityDetail_status :not_started ;
+                 :CarePlanActivityDetail_description "Wants to avoid hospital admission if possible, but would want to consider options as need arises." .
+
+
+###  https://example.org/clinical-onto#cp1_act3
+:cp1_act3 rdf:type owl:NamedIndividual ,
+                   :CarePlanActivity ;
+          :CarePlanActivity_detail :cp1_act3_detail .
+
+
+###  https://example.org/clinical-onto#cp1_act3_code
+:cp1_act3_code rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :cp1_act3_coding .
+
+
+###  https://example.org/clinical-onto#cp1_act3_coding
+:cp1_act3_coding rdf:type owl:NamedIndividual ,
+                          :Coding ;
+                 :Coding_code "702779007" ;
+                 :Coding_display "Emergency health care plan agreed" ;
+                 :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cp1_act3_detail
+:cp1_act3_detail rdf:type owl:NamedIndividual ,
+                          :CarePlanActivityDetail ;
+                 :CarePlanActivityDetail_status :not_started ;
+                 :CarePlanActivityDetail_description "[18 Sept 2018] This plan is known to the Harrogate Palliative Care Team..." .
+
+
+###  https://example.org/clinical-onto#cp1_cat
+:cp1_cat rdf:type owl:NamedIndividual ,
+                  :CodeableConcept ;
+         :CodeableConcept_coding :cp1_cat_coding .
+
+
+###  https://example.org/clinical-onto#cp1_cat_coding
+:cp1_cat_coding rdf:type owl:NamedIndividual ,
+                         :Coding ;
+                :Coding_code "736373009" ;
+                :Coding_display "End Of Life Care Plan" ;
+                :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#cp1_id
+:cp1_id rdf:type owl:NamedIndividual ;
+        :Identifier_value "blm1" .
+
+
+###  https://example.org/clinical-onto#cp1_period
+:cp1_period rdf:type owl:NamedIndividual ,
+                     :Period ;
+            :Period_start "2018-07-31T23:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#data_requested
+:data_requested rdf:type owl:NamedIndividual ,
+                         :GuidanceResponseStatus ;
+                rdfs:label "data-requested"@en .
+
+
+###  https://example.org/clinical-onto#data_required
+:data_required rdf:type owl:NamedIndividual ,
+                        :GuidanceResponseStatus ;
+               rdfs:label "data-required"@en .
+
+
+###  https://example.org/clinical-onto#daughter
+:daughter rdf:type owl:NamedIndividual ,
+                   :FamilyRelationship ;
+          rdfs:label "daughter"@en .
+
+
+###  https://example.org/clinical-onto#dos1
+:dos1 rdf:type owl:NamedIndividual ,
+               :Dosage ;
+      :Dosage_doseQuantity :doseQty1 ;
+      :Dosage_route :route1 ;
+      :Dosage_asNeededBoolean "false"^^xsd:boolean .
+
+
+###  https://example.org/clinical-onto#doseQty1
+:doseQty1 rdf:type owl:NamedIndividual ,
+                   :Quantity ;
+          :Quantity_unit "Tablet (unit of presentation)" ;
+          :Quantity_value 1.00 .
+
+
+###  https://example.org/clinical-onto#draft
+:draft rdf:type owl:NamedIndividual ,
+                :CarePlanStatus ,
+                :ReferralRequestStatus .
+
+
+###  https://example.org/clinical-onto#email
+:email rdf:type owl:NamedIndividual ,
+                :ContactPointSystem .
+
+
+###  https://example.org/clinical-onto#enc1
+:enc1 rdf:type owl:NamedIndividual ,
+               :Encounter ;
+      :Encounter_class :enc1_class ;
+      :Encounter_period :enc1_period ;
+      :Encounter_priority :enc1_priority ;
+      :Encounter_serviceProvider :org200001 ;
+      :Encounter_status :arrived ;
+      :Encounter_type :enc1_type ;
+      :Encounter_episodeOfCareRef "EpisodeOfCare/1" .
+
+
+###  https://example.org/clinical-onto#enc1_class
+:enc1_class rdf:type owl:NamedIndividual ,
+                     :Coding ;
+            :Coding_code "IMP" ;
+            :Coding_display "inpatient encounter" ;
+            :Coding_system "http://hl7.org/fhir/v3/ActCode"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#enc1_period
+:enc1_period rdf:type owl:NamedIndividual ,
+                      :Period ;
+             :Period_start "2010-10-20T17:16:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#enc1_priority
+:enc1_priority rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :enc1_priority_coding .
+
+
+###  https://example.org/clinical-onto#enc1_priority_coding
+:enc1_priority_coding rdf:type owl:NamedIndividual ,
+                               :Coding ;
+                      :Coding_code "R" ;
+                      :Coding_display "routine" ;
+                      :Coding_system "http://hl7.org/fhir/v3/ActPriority"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#enc1_type
+:enc1_type rdf:type owl:NamedIndividual ,
+                    :CodeableConcept ;
+           :CodeableConcept_coding :enc1_type_coding .
+
+
+###  https://example.org/clinical-onto#enc1_type_coding
+:enc1_type_coding rdf:type owl:NamedIndividual ,
+                           :Coding ;
+                  :Coding_code "281685003" ;
+                  :Coding_display "Admission for care" ;
+                  :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#enc33
+:enc33 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#enc749
+:enc749 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#entered_in_error
+:entered_in_error rdf:type owl:NamedIndividual ,
+                           :AllergyVerificationStatus ,
+                           :CarePlanStatus ,
+                           :EncounterStatus ,
+                           :GuidanceResponseStatus ,
+                           :HistoryStatus ,
+                           :MedicationStatementStatus ,
+                           :ReferralRequestStatus ;
+                  rdfs:label "entered-in-error"@en .
+
+
+###  https://example.org/clinical-onto#entered_in_error_act
+:entered_in_error_act rdf:type owl:NamedIndividual ,
+                               :CarePlanActivityStatus ;
+                      rdfs:label "entered-in-error"@en .
+
+
+###  https://example.org/clinical-onto#environment
+:environment rdf:type owl:NamedIndividual ,
+                      :AllergyCategory ;
+             rdfs:label "environment"@en .
+
+
+###  https://example.org/clinical-onto#failure
+:failure rdf:type owl:NamedIndividual ,
+                  :GuidanceResponseStatus ;
+         rdfs:label "failure"@en .
+
+
+###  https://example.org/clinical-onto#father
+:father rdf:type owl:NamedIndividual ,
+                 :FamilyRelationship ;
+        rdfs:label "father"@en .
+
+
+###  https://example.org/clinical-onto#fax
+:fax rdf:type owl:NamedIndividual ,
+              :ContactPointSystem .
+
+
+###  https://example.org/clinical-onto#female
+:female rdf:type owl:NamedIndividual ,
+                 :AdministrativeGender ;
+        rdfs:label "female"@en .
+
+
+###  https://example.org/clinical-onto#filler_order
+:filler_order rdf:type owl:NamedIndividual ,
+                       :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#finished
+:finished rdf:type owl:NamedIndividual ,
+                   :EncounterStatus ;
+          rdfs:label "finished"@en .
+
+
+###  https://example.org/clinical-onto#fmh_brother_crc
+:fmh_brother_crc rdf:type owl:NamedIndividual ,
+                          :FamilyMemberHistory ;
+                 :FamilyMemberHistory_condition :fmh_brother_crc_condition ;
+                 :FamilyMemberHistory_gender :male ;
+                 :FamilyMemberHistory_patient :patienta ;
+                 :FamilyMemberHistory_relationship :brother ;
+                 :FamilyMemberHistory_status :completed .
+
+
+###  https://example.org/clinical-onto#fmh_brother_crc_condition
+:fmh_brother_crc_condition rdf:type owl:NamedIndividual ,
+                                    :FamilyCondition ;
+                           :Condition_code :fmh_brother_crc_condition_code ;
+                           :FamilyCondition_outcome :recurrence .
+
+
+###  https://example.org/clinical-onto#fmh_brother_crc_condition_code
+:fmh_brother_crc_condition_code rdf:type owl:NamedIndividual ,
+                                         :CodeableConcept ;
+                                :CodeableConcept_coding :fmh_brother_crc_condition_coding .
+
+
+###  https://example.org/clinical-onto#fmh_brother_crc_condition_coding
+:fmh_brother_crc_condition_coding rdf:type owl:NamedIndividual ,
+                                           :Coding ;
+                                  :Coding_code "363418001" ;
+                                  :Coding_display "Malignant neoplasm of colon" ;
+                                  :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#fmh_mother_endo
+:fmh_mother_endo rdf:type owl:NamedIndividual ,
+                          :FamilyMemberHistory ;
+                 :FamilyMemberHistory_condition :fmh_mother_endo_condition ;
+                 :FamilyMemberHistory_gender :female ;
+                 :FamilyMemberHistory_patient :patienta ;
+                 :FamilyMemberHistory_relationship :mother ;
+                 :FamilyMemberHistory_status :completed .
+
+
+###  https://example.org/clinical-onto#fmh_mother_endo_condition
+:fmh_mother_endo_condition rdf:type owl:NamedIndividual ,
+                                    :FamilyCondition ;
+                           :Condition_code :fmh_mother_endo_condition_code ;
+                           :FamilyCondition_outcome :recurrence .
+
+
+###  https://example.org/clinical-onto#fmh_mother_endo_condition_code
+:fmh_mother_endo_condition_code rdf:type owl:NamedIndividual ,
+                                         :CodeableConcept ;
+                                :CodeableConcept_coding :fmh_mother_endo_condition_coding .
+
+
+###  https://example.org/clinical-onto#fmh_mother_endo_condition_coding
+:fmh_mother_endo_condition_coding rdf:type owl:NamedIndividual ,
+                                           :Coding ;
+                                  :Coding_code "126906006" ;
+                                  :Coding_display "Malignant neoplasm of endometrium" ;
+                                  :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#food
+:food rdf:type owl:NamedIndividual ,
+               :AllergyCategory ;
+      rdfs:label "food"@en .
+
+
+###  https://example.org/clinical-onto#gr1
+:gr1 rdf:type owl:NamedIndividual ,
+              :GuidanceResponse ;
+     :GuidanceResponse_encounter :enc749 ;
+     :GuidanceResponse_status :success ;
+     :GuidanceResponse_moduleUri "urn:cds:colorectal-pathway:v1"^^xsd:anyURI ;
+     :GuidanceResponse_occurrenceDateTime "2018-11-08T12:31:00+00:00"^^xsd:dateTime ;
+     :GuidanceResponse_resultRef "CarePlan/colorectal-urgent-2ww" .
+
+
+###  https://example.org/clinical-onto#health_unknown
+:health_unknown rdf:type owl:NamedIndividual ,
+                         :HistoryStatus ;
+                rdfs:label "health-unknown"@en .
+
+
+###  https://example.org/clinical-onto#high
+:high rdf:type owl:NamedIndividual ,
+               :AllergyCriticality ;
+      rdfs:label "high"@en .
+
+
+###  https://example.org/clinical-onto#in_progress
+:in_progress rdf:type owl:NamedIndividual ,
+                      :CarePlanActivityStatus ,
+                      :EncounterStatus ,
+                      :GuidanceResponseStatus ;
+             rdfs:label "in-progress"@en .
+
+
+###  https://example.org/clinical-onto#inactive
+:inactive rdf:type owl:NamedIndividual ,
+                   :AllergyClinicalStatus ,
+                   :ClinicalStatus ;
+          rdfs:label "inactive"@en .
+
+
+###  https://example.org/clinical-onto#instance_order
+:instance_order rdf:type owl:NamedIndividual ,
+                         :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#intended
+:intended rdf:type owl:NamedIndividual ,
+                   :MedicationStatementStatus ;
+          rdfs:label "intended"@en .
+
+
+###  https://example.org/clinical-onto#interpCoding
+:interpCoding rdf:type owl:NamedIndividual ,
+                       :Coding ;
+              :Coding_code "N" ;
+              :Coding_display "Normal" ;
+              :Coding_system "http://hl7.org/fhir/v2/0078"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#intolerance
+:intolerance rdf:type owl:NamedIndividual ,
+                      :AllergyType ;
+             rdfs:label "intolerance"@en .
+
+
+###  https://example.org/clinical-onto#low
+:low rdf:type owl:NamedIndividual ,
+              :AllergyCriticality ;
+     rdfs:label "low"@en .
+
+
+###  https://example.org/clinical-onto#male
+:male rdf:type owl:NamedIndividual ,
+               :AdministrativeGender ;
+      rdfs:label "male"@en .
+
+
+###  https://example.org/clinical-onto#med_levothyroxine
+:med_levothyroxine rdf:type owl:NamedIndividual ,
+                            :MedicationStatement ;
+                   :MedicationStatement_taken :taken_yes ;
+                   :MedicationStatement_dateAsserted "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                   :MedicationStatement_effectiveDateTime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
+                   :MedicationStatement_medicationReference "Medication/levothyroxine" ;
+                   :MedicationStatement_status :active ;
+                   :MedicationStatement_subject :patienta .
+
+
+###  https://example.org/clinical-onto#med_metformin
+:med_metformin rdf:type owl:NamedIndividual ,
+                        :MedicationStatement ;
+               :MedicationStatement_taken :taken_yes ;
+               :MedicationStatement_dateAsserted "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+               :MedicationStatement_effectiveDateTime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
+               :MedicationStatement_medicationReference "Medication/metformin" ;
+               :MedicationStatement_status :active ;
+               :MedicationStatement_subject :patienta .
+
+
+###  https://example.org/clinical-onto#med_omeprazole
+:med_omeprazole rdf:type owl:NamedIndividual ,
+                         :MedicationStatement ;
+                :Condition_subject :patienta ;
+                :MedicationStatement_taken :taken_yes ;
+                :MedicationStatement_dateAsserted "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                :MedicationStatement_effectiveDateTime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
+                :MedicationStatement_medicationReference "Medication/omeprazole" ;
+                :MedicationStatement_status :active ;
+                :MedicationStatement_subject :patienta .
+
+
+###  https://example.org/clinical-onto#med_paracetamol
+:med_paracetamol rdf:type owl:NamedIndividual ,
+                          :MedicationStatement ;
+                 :MedicationStatement_taken :taken_yes ;
+                 :MedicationStatement_dateAsserted "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                 :MedicationStatement_effectiveDateTime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
+                 :MedicationStatement_medicationReference "Medication/paracetamol" ;
+                 :MedicationStatement_status :active ;
+                 :MedicationStatement_subject :patienta .
+
+
+###  https://example.org/clinical-onto#med_ramipril
+:med_ramipril rdf:type owl:NamedIndividual ,
+                       :MedicationStatement ;
+              :MedicationStatement_taken :taken_yes ;
+              :MedicationStatement_dateAsserted "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+              :MedicationStatement_effectiveDateTime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
+              :MedicationStatement_medicationReference "Medication/ramipril" ;
+              :MedicationStatement_status :active ;
+              :MedicationStatement_subject :patienta .
+
+
+###  https://example.org/clinical-onto#medication
+:medication rdf:type owl:NamedIndividual ,
+                     :AllergyCategory ;
+            rdfs:label "medication"@en .
+
+
+###  https://example.org/clinical-onto#mother
+:mother rdf:type owl:NamedIndividual ,
+                 :FamilyRelationship ;
+        rdfs:label "mother"@en .
+
+
+###  https://example.org/clinical-onto#ms1
+:ms1 rdf:type owl:NamedIndividual ,
+              :MedicationStatement ;
+     :MedicationStatement_dosage :dos1 ;
+     :MedicationStatement_note :note1 ;
+     :MedicationStatement_taken :taken_unk ;
+     :MedicationStatement_dateAsserted "2019-01-21T14:21:33+00:00"^^xsd:dateTime ;
+     :MedicationStatement_effectiveDateTime "2017-07-31T00:00:00+00:00"^^xsd:dateTime ;
+     :MedicationStatement_medicationReference "Medication/1" .
+
+
+###  https://example.org/clinical-onto#not_started
+:not_started rdf:type owl:NamedIndividual ,
+                      :CarePlanActivityStatus ;
+             rdfs:label "not-started"@en .
+
+
+###  https://example.org/clinical-onto#not_taken
+:not_taken rdf:type owl:NamedIndividual ,
+                    :MedicationStatementStatus ;
+           rdfs:label "not-taken"@en .
+
+
+###  https://example.org/clinical-onto#note1
+:note1 rdf:type owl:NamedIndividual ,
+                :Annotation .
+
+
+###  https://example.org/clinical-onto#obs1
+:obs1 rdf:type owl:NamedIndividual ,
+               :Observation ;
+      :Observation_bodySite :obs1_bodySite ;
+      :Observation_interpretation :obs1_interp ;
+      :Observation_valueQuantity :obs1_qty ;
+      :Observation_effectiveDateTime "2014-04-28T04:37:00+00:00"^^xsd:dateTime ;
+      :Observation_status "final" .
+
+
+###  https://example.org/clinical-onto#obs1_bodySite
+:obs1_bodySite rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :bodyCoding .
+
+
+###  https://example.org/clinical-onto#obs1_cat
+:obs1_cat rdf:type owl:NamedIndividual ,
+                   :CodeableConcept ;
+          :CodeableConcept_coding :catCoding .
+
+
+###  https://example.org/clinical-onto#obs1_code
+:obs1_code rdf:type owl:NamedIndividual ,
+                    :CodeableConcept ;
+           :CodeableConcept_coding :bpCoding .
+
+
+###  https://example.org/clinical-onto#obs1_interp
+:obs1_interp rdf:type owl:NamedIndividual ,
+                      :CodeableConcept ;
+             :CodeableConcept_coding :interpCoding .
+
+
+###  https://example.org/clinical-onto#obs1_qty
+:obs1_qty rdf:type owl:NamedIndividual ,
+                   :Quantity ;
+          :Quantity_unit "mm[Hg]" ;
+          :Quantity_value 116.0 .
+
+
+###  https://example.org/clinical-onto#obs_creatinine
+:obs_creatinine rdf:type owl:NamedIndividual ,
+                         :Observation ;
+                :Observation_valueQuantity :obs_creatinine_qty ;
+                :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+                :Observation_status "final" ;
+                :Observation_code :obs_creatinine_code ;
+                :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_creatinine_code
+:obs_creatinine_code rdf:type owl:NamedIndividual ,
+                              :CodeableConcept ;
+                     :CodeableConcept_coding :obs_creatinine_coding .
+
+
+###  https://example.org/clinical-onto#obs_creatinine_coding
+:obs_creatinine_coding rdf:type owl:NamedIndividual ,
+                                :Coding ;
+                       :Coding_code "2160-0" ;
+                       :Coding_display "Creatinine" ;
+                       :Coding_system "http://loinc.org"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_creatinine_qty
+:obs_creatinine_qty rdf:type owl:NamedIndividual ,
+                             :Quantity ;
+                    :Quantity_unit "µmol/L" ;
+                    :Quantity_value 78.0 .
+
+
+###  https://example.org/clinical-onto#obs_egfr
+:obs_egfr rdf:type owl:NamedIndividual ,
+                   :Observation ;
+          :Observation_valueQuantity :obs_egfr_qty ;
+          :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+          :Observation_status "final" ;
+          :Observation_code :obs_egfr_code ;
+          :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_egfr_code
+:obs_egfr_code rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :obs_egfr_coding .
+
+
+###  https://example.org/clinical-onto#obs_egfr_coding
+:obs_egfr_coding rdf:type owl:NamedIndividual ,
+                          :Coding ;
+                 :Coding_code "33914-3" ;
+                 :Coding_display "eGFR" ;
+                 :Coding_system "http://loinc.org"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_egfr_qty
+:obs_egfr_qty rdf:type owl:NamedIndividual ,
+                       :Quantity ;
+              :Quantity_unit "ml/min/1.73 m²" ;
+              :Quantity_value 74.0 .
+
+
+###  https://example.org/clinical-onto#obs_ferritin
+:obs_ferritin rdf:type owl:NamedIndividual ,
+                       :Observation ;
+              :Observation_valueQuantity :obs_ferritin_qty ;
+              :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+              :Observation_status "final" ;
+              :Observation_code :obs_ferritin_code ;
+              :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_ferritin_code
+:obs_ferritin_code rdf:type owl:NamedIndividual ,
+                            :CodeableConcept ;
+                   :CodeableConcept_coding :obs_ferritin_coding .
+
+
+###  https://example.org/clinical-onto#obs_ferritin_coding
+:obs_ferritin_coding rdf:type owl:NamedIndividual ,
+                              :Coding ;
+                     :Coding_code "2276-4" ;
+                     :Coding_display "Ferritin" ;
+                     :Coding_system "http://loinc.org"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_ferritin_qty
+:obs_ferritin_qty rdf:type owl:NamedIndividual ,
+                           :Quantity ;
+                  :Quantity_unit "µg/L" ;
+                  :Quantity_value 18.0 .
+
+
+###  https://example.org/clinical-onto#obs_fit
+:obs_fit rdf:type owl:NamedIndividual ,
+                  :Observation ;
+         :Observation_valueQuantity :obs_fit_qty ;
+         :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+         :Observation_status "final" ;
+         :Observation_code :obs_fit_code ;
+         :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_fit_code
+:obs_fit_code rdf:type owl:NamedIndividual ,
+                       :CodeableConcept ;
+              :CodeableConcept_coding :obs_fit_coding .
+
+
+###  https://example.org/clinical-onto#obs_fit_coding
+:obs_fit_coding rdf:type owl:NamedIndividual ,
+                         :Coding ;
+                :Coding_code "773530003" ;
+                :Coding_display "Faecal immunochemical test" ;
+                :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_fit_qty
+:obs_fit_qty rdf:type owl:NamedIndividual ,
+                      :Quantity ;
+             :Quantity_unit "µg Hb/g" ;
+             :Quantity_value 142.0 .
+
+
+###  https://example.org/clinical-onto#obs_hb
+:obs_hb rdf:type owl:NamedIndividual ,
+                 :Observation ;
+        :Observation_valueQuantity :obs_hb_qty ;
+        :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+        :Observation_status "final" ;
+        :Observation_code :obs_hb_code ;
+        :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_hb_code
+:obs_hb_code rdf:type owl:NamedIndividual ,
+                      :CodeableConcept ;
+             :CodeableConcept_coding :obs_hb_coding .
+
+
+###  https://example.org/clinical-onto#obs_hb_coding
+:obs_hb_coding rdf:type owl:NamedIndividual ,
+                        :Coding ;
+               :Coding_code "718-7" ;
+               :Coding_display "Hemoglobin" ;
+               :Coding_system "http://loinc.org"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_hb_qty
+:obs_hb_qty rdf:type owl:NamedIndividual ,
+                     :Quantity ;
+            :Quantity_unit "g/L" ;
+            :Quantity_value 103.0 .
+
+
+###  https://example.org/clinical-onto#obs_mcv
+:obs_mcv rdf:type owl:NamedIndividual ,
+                  :Observation ;
+         :Observation_valueQuantity :obs_mcv_qty ;
+         :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+         :Observation_status "final" ;
+         :Observation_code :obs_mcv_code ;
+         :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_mcv_code
+:obs_mcv_code rdf:type owl:NamedIndividual ,
+                       :CodeableConcept ;
+              :CodeableConcept_coding :obs_mcv_coding .
+
+
+###  https://example.org/clinical-onto#obs_mcv_coding
+:obs_mcv_coding rdf:type owl:NamedIndividual ,
+                         :Coding ;
+                :Coding_code "787-2" ;
+                :Coding_display "MCV" ;
+                :Coding_system "http://loinc.org"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_mcv_qty
+:obs_mcv_qty rdf:type owl:NamedIndividual ,
+                      :Quantity ;
+             :Quantity_unit "fL" ;
+             :Quantity_value 74.0 .
+
+
+###  https://example.org/clinical-onto#obs_ttg
+:obs_ttg rdf:type owl:NamedIndividual ,
+                  :Observation ;
+         :Observation_interpretation :obs_ttg_interp ;
+         :Observation_effectiveDateTime "2024-11-08T10:00:00+00:00"^^xsd:dateTime ;
+         :Observation_status "final" ;
+         :Observation_code :obs_ttg_code ;
+         :Observation_subject :patienta .
+
+
+###  https://example.org/clinical-onto#obs_ttg_code
+:obs_ttg_code rdf:type owl:NamedIndividual ,
+                       :CodeableConcept ;
+              :CodeableConcept_coding :obs_ttg_coding .
+
+
+###  https://example.org/clinical-onto#obs_ttg_coding
+:obs_ttg_coding rdf:type owl:NamedIndividual ,
+                         :Coding ;
+                :Coding_code "16125-7" ;
+                :Coding_display "tTG IgA" ;
+                :Coding_system "http://loinc.org"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#obs_ttg_interp
+:obs_ttg_interp rdf:type owl:NamedIndividual ,
+                         :CodeableConcept ;
+                :CodeableConcept_coding :obs_ttg_interp_coding .
+
+
+###  https://example.org/clinical-onto#obs_ttg_interp_coding
+:obs_ttg_interp_coding rdf:type owl:NamedIndividual ,
+                                :Coding ;
+                       :Coding_code "260385009" ;
+                       :Coding_display "Negative" ;
+                       :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#on_hold
+:on_hold rdf:type owl:NamedIndividual ,
+                  :CarePlanStatus ,
+                  :MedicationStatementStatus ;
+         rdfs:label "on-hold"@en .
+
+
+###  https://example.org/clinical-onto#on_hold_act
+:on_hold_act rdf:type owl:NamedIndividual ,
+                      :CarePlanActivityStatus ;
+             rdfs:label "on-hold"@en .
+
+
+###  https://example.org/clinical-onto#onleave
+:onleave rdf:type owl:NamedIndividual ,
+                  :EncounterStatus ;
+         rdfs:label "onleave"@en .
+
+
+###  https://example.org/clinical-onto#option
+:option rdf:type owl:NamedIndividual ,
+                 :CarePlanIntent ,
+                 :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#order
+:order rdf:type owl:NamedIndividual ,
+                :CarePlanIntent ,
+                :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#org200001
+:org200001 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#org200274
+:org200274 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#org200275
+:org200275 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#original_order
+:original_order rdf:type owl:NamedIndividual ,
+                         :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#other
+:other rdf:type owl:NamedIndividual ,
+                :AdministrativeGender ,
+                :ContactPointSystem ;
+       rdfs:label "other"@en .
+
+
+###  https://example.org/clinical-onto#pager
+:pager rdf:type owl:NamedIndividual ,
+                :ContactPointSystem .
+
+
+###  https://example.org/clinical-onto#partial
+:partial rdf:type owl:NamedIndividual ,
+                  :HistoryStatus ;
+         rdfs:label "partial"@en .
+
+
+###  https://example.org/clinical-onto#patient1
+:patient1 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#patient1183
+:patient1183 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#patient1184
+:patient1184 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#patienta
+:patienta rdf:type owl:NamedIndividual ,
+                   :Patient ;
+          :Patient_name :patienta_name ;
+          <http://www.co-ode.org/ontologies/ont.owl#capacityToConsent> "true"^^xsd:boolean ;
+          <http://www.co-ode.org/ontologies/ont.owl#interpreterRequired> "false"^^xsd:boolean ;
+          <http://www.co-ode.org/ontologies/ont.owl#nhsNumber> "1234567890" ;
+          :Organization_active "true"^^xsd:boolean ;
+          :Organization_id "patienta" ;
+          :Patient_birthDate "1956-01-15"^^xsd:date ;
+          :Practitioner_gender "female" .
+
+
+###  https://example.org/clinical-onto#patienta_name
+:patienta_name rdf:type owl:NamedIndividual ,
+                        :HumanName ;
+               <http://www.co-ode.org/ontologies/ont.owl#familyName> "PatientA" ;
+               <http://www.co-ode.org/ontologies/ont.owl#givenName> "Test" ;
+               :Address_text "Test PatientA" .
+
+
+###  https://example.org/clinical-onto#phone
+:phone rdf:type owl:NamedIndividual ,
+                :ContactPointSystem .
+
+
+###  https://example.org/clinical-onto#plan
+:plan rdf:type owl:NamedIndividual ,
+               :CarePlanIntent ,
+               :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#planned
+:planned rdf:type owl:NamedIndividual ,
+                  :EncounterStatus ;
+         rdfs:label "planned"@en .
+
+
+###  https://example.org/clinical-onto#pract1
+:pract1 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#pract202214
+:pract202214 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#pract203543
+:pract203543 rdf:type owl:NamedIndividual .
+
+
+###  https://example.org/clinical-onto#proposal
+:proposal rdf:type owl:NamedIndividual ,
+                   :CarePlanIntent ,
+                   :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#recurrence
+:recurrence rdf:type owl:NamedIndividual ,
+                     :ClinicalStatus ;
+            rdfs:label "recurrence"@en .
+
+
+###  https://example.org/clinical-onto#ref1
+:ref1 rdf:type owl:NamedIndividual ,
+               :ReferralRequest ;
+      :ReferralRequest_context :enc749 ;
+      :ReferralRequest_intent :order ;
+      :ReferralRequest_reasonCode :ref1_reason ;
+      :ReferralRequest_recipient :org200275 ;
+      :ReferralRequest_requester :ref1_requester ;
+      :ReferralRequest_serviceRequested :ref1_service ;
+      :ReferralRequest_specialty :ref1_specialty ;
+      :ReferralRequest_authoredOn "2018-11-08T12:30:00+00:00"^^xsd:dateTime ;
+      :ReferralRequest_status :completed ;
+      :ReferralRequest_subject :patient1183 ;
+      :ReferralRequest_type :ref1_type .
+
+
+###  https://example.org/clinical-onto#ref1_reason
+:ref1_reason rdf:type owl:NamedIndividual ,
+                      :CodeableConcept ;
+             :CodeableConcept_coding :ref1_reason_coding .
+
+
+###  https://example.org/clinical-onto#ref1_reason_coding
+:ref1_reason_coding rdf:type owl:NamedIndividual ,
+                             :Coding ;
+                    :Coding_code "422768004" ;
+                    :Coding_display "Unresponsive" ;
+                    :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#ref1_requester
+:ref1_requester rdf:type owl:NamedIndividual ,
+                         :Requester ;
+                :Requester_agent :pract203543 ;
+                :Requester_onBehalfOf :org200274 .
+
+
+###  https://example.org/clinical-onto#ref1_service
+:ref1_service rdf:type owl:NamedIndividual ,
+                       :CodeableConcept ;
+              :CodeableConcept_coding :ref1_service_coding .
+
+
+###  https://example.org/clinical-onto#ref1_service_coding
+:ref1_service_coding rdf:type owl:NamedIndividual ,
+                              :Coding ;
+                     :Coding_code "394576009" ;
+                     :Coding_display "Surgical-Accident & emergency" ;
+                     :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#ref1_specialty
+:ref1_specialty rdf:type owl:NamedIndividual ,
+                         :CodeableConcept ;
+                :CodeableConcept_coding :ref1_specialty_coding .
+
+
+###  https://example.org/clinical-onto#ref1_specialty_coding
+:ref1_specialty_coding rdf:type owl:NamedIndividual ,
+                                :Coding ;
+                       :Coding_code "180" ;
+                       :Coding_display "ACCIDENT AND EMERGENCY" ;
+                       :Coding_system "https://fhir.nhs.uk/STU3/CodeSystem/DCH-Specialty-1"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#ref1_type
+:ref1_type rdf:type owl:NamedIndividual ,
+                    :CodeableConcept ;
+           :CodeableConcept_coding :ref1_type_coding .
+
+
+###  https://example.org/clinical-onto#ref1_type_coding
+:ref1_type_coding rdf:type owl:NamedIndividual ,
+                           :Coding ;
+                  :Coding_code "713400007" ;
+                  :Coding_display "Referral to medical emergency team" ;
+                  :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#ref_colorectal
+:ref_colorectal rdf:type owl:NamedIndividual ,
+                         :ReferralRequest ;
+                :ReferralRequest_intent :order ;
+                :ReferralRequest_reasonCode :ref_colorectal_reason ;
+                :ReferralRequest_authoredOn "2024-11-08T12:00:00+00:00"^^xsd:dateTime ;
+                :ReferralRequest_status :active ;
+                :ReferralRequest_subject :patienta ;
+                :ReferralRequest_type :ref_colorectal_type .
+
+
+###  https://example.org/clinical-onto#ref_colorectal_reason
+:ref_colorectal_reason rdf:type owl:NamedIndividual ,
+                                :CodeableConcept ;
+                       :CodeableConcept_coding :ref_colorectal_reason_coding .
+
+
+###  https://example.org/clinical-onto#ref_colorectal_reason_coding
+:ref_colorectal_reason_coding rdf:type owl:NamedIndividual ,
+                                       :Coding ;
+                              :Coding_code "422768004" ;
+                              :Coding_display "Urgent two-week-wait colorectal pathway referral" ;
+                              :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#ref_colorectal_type
+:ref_colorectal_type rdf:type owl:NamedIndividual ,
+                              :CodeableConcept ;
+                     :CodeableConcept_coding :ref_colorectal_type_coding .
+
+
+###  https://example.org/clinical-onto#ref_colorectal_type_coding
+:ref_colorectal_type_coding rdf:type owl:NamedIndividual ,
+                                     :Coding ;
+                            :Coding_code "713400007" ;
+                            :Coding_display "Referral to colorectal surgery" ;
+                            :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#reflex_order
+:reflex_order rdf:type owl:NamedIndividual ,
+                       :ReferralRequestIntent .
+
+
+###  https://example.org/clinical-onto#refuted
+:refuted rdf:type owl:NamedIndividual ,
+                  :AllergyVerificationStatus ;
+         rdfs:label "refuted"@en .
+
+
+###  https://example.org/clinical-onto#remission
+:remission rdf:type owl:NamedIndividual ,
+                    :ClinicalStatus ;
+           rdfs:label "remission"@en .
+
+
+###  https://example.org/clinical-onto#resolved
+:resolved rdf:type owl:NamedIndividual ,
+                   :AllergyClinicalStatus ,
+                   :ClinicalStatus ;
+          rdfs:label "resolved"@en .
+
+
+###  https://example.org/clinical-onto#revoked
+:revoked rdf:type owl:NamedIndividual ,
+                  :CarePlanStatus .
+
+
+###  https://example.org/clinical-onto#route1
+:route1 rdf:type owl:NamedIndividual ,
+                 :CodeableConcept ;
+        :CodeableConcept_coding :routeCoding1 .
+
+
+###  https://example.org/clinical-onto#routeCoding1
+:routeCoding1 rdf:type owl:NamedIndividual ,
+                       :Coding ;
+              :Coding_code "394899003" ;
+              :Coding_display "Oral administration of treatment" ;
+              :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#rx1
+:rx1 rdf:type owl:NamedIndividual ,
+              :AllergyReaction ;
+     :AllergyReaction_manifestation :rx1_manifestation ;
+     :AllergyReaction_substance :rx1_substance ;
+     :AllergyReaction_onset "2012-06-01T00:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://example.org/clinical-onto#rx1_manifestation
+:rx1_manifestation rdf:type owl:NamedIndividual ,
+                            :CodeableConcept ;
+                   :CodeableConcept_coding :rx1_manifestation_coding .
+
+
+###  https://example.org/clinical-onto#rx1_manifestation_coding
+:rx1_manifestation_coding rdf:type owl:NamedIndividual ,
+                                   :Coding ;
+                          :Coding_code "39579001" ;
+                          :Coding_display "Anaphylaxis" ;
+                          :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#rx1_substance
+:rx1_substance rdf:type owl:NamedIndividual ,
+                        :CodeableConcept ;
+               :CodeableConcept_coding :rx1_substance_coding .
+
+
+###  https://example.org/clinical-onto#rx1_substance_coding
+:rx1_substance_coding rdf:type owl:NamedIndividual ,
+                               :Coding ;
+                      :Coding_code "226017009" ;
+                      :Coding_display "Bombay mix" ;
+                      :Coding_system "http://snomed.info/sct"^^xsd:anyURI .
+
+
+###  https://example.org/clinical-onto#scheduled
+:scheduled rdf:type owl:NamedIndividual ,
+                    :CarePlanActivityStatus .
+
+
+###  https://example.org/clinical-onto#sister
+:sister rdf:type owl:NamedIndividual ,
+                 :FamilyRelationship ;
+        rdfs:label "sister"@en .
+
+
+###  https://example.org/clinical-onto#sms
+:sms rdf:type owl:NamedIndividual ,
+              :ContactPointSystem .
+
+
+###  https://example.org/clinical-onto#son
+:son rdf:type owl:NamedIndividual ,
+              :FamilyRelationship ;
+     rdfs:label "son"@en .
+
+
+###  https://example.org/clinical-onto#stopped
+:stopped rdf:type owl:NamedIndividual ,
+                  :MedicationStatementStatus ;
+         rdfs:label "stopped"@en .
+
+
+###  https://example.org/clinical-onto#success
+:success rdf:type owl:NamedIndividual ,
+                  :GuidanceResponseStatus ;
+         rdfs:label "success"@en .
+
+
+###  https://example.org/clinical-onto#taken_na
+:taken_na rdf:type owl:NamedIndividual ,
+                   :MedicationTakenStatus ;
+          rdfs:label "na"@en .
+
+
+###  https://example.org/clinical-onto#taken_no
+:taken_no rdf:type owl:NamedIndividual ,
+                   :MedicationTakenStatus ;
+          rdfs:label "n"@en .
+
+
+###  https://example.org/clinical-onto#taken_unk
+:taken_unk rdf:type owl:NamedIndividual ,
+                    :MedicationTakenStatus ;
+           rdfs:label "unk"@en .
+
+
+###  https://example.org/clinical-onto#taken_yes
+:taken_yes rdf:type owl:NamedIndividual ,
+                    :MedicationTakenStatus ;
+           rdfs:label "y"@en .
+
+
+###  https://example.org/clinical-onto#triaged
+:triaged rdf:type owl:NamedIndividual ,
+                  :EncounterStatus ;
+         rdfs:label "triaged"@en .
+
+
+###  https://example.org/clinical-onto#unable_to_assess
+:unable_to_assess rdf:type owl:NamedIndividual ,
+                           :AllergyCriticality ;
+                  rdfs:label "unable-to-assess"@en .
+
+
+###  https://example.org/clinical-onto#unconfirmed
+:unconfirmed rdf:type owl:NamedIndividual ,
+                      :AllergyVerificationStatus ;
+             rdfs:label "unconfirmed"@en .
+
+
+###  https://example.org/clinical-onto#unknown
+:unknown rdf:type owl:NamedIndividual ,
+                  :AdministrativeGender ,
+                  :CarePlanStatus ,
+                  :EncounterStatus ,
+                  :MedicationStatementStatus ,
+                  :ReferralRequestStatus ;
+         rdfs:label "unknown"@en .
+
+
+###  https://example.org/clinical-onto#unknown_act
+:unknown_act rdf:type owl:NamedIndividual ,
+                      :CarePlanActivityStatus ;
+             rdfs:label "unknown"@en .
+
+
+###  https://example.org/clinical-onto#url
+:url rdf:type owl:NamedIndividual ,
+              :ContactPointSystem .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+
+:Procedure a owl:Class .
+
+### Object properties
+:subject a owl:ObjectProperty ; rdfs:domain :Procedure ; rdfs:range :Patient .
+:context a owl:ObjectProperty ; rdfs:domain :Procedure ; rdfs:range :EpisodeOfCare .
+:performer a owl:ObjectProperty ; rdfs:domain :Procedure ; rdfs:range :Practitioner .
+:reason a owl:ObjectProperty ; rdfs:domain :Procedure ; rdfs:range :Condition .
+
+:code a owl:ObjectProperty ; rdfs:domain :Procedure ; rdfs:range :CodeableConcept .
+:coding a owl:ObjectProperty ; rdfs:domain :CodeableConcept ; rdfs:range :Coding .
+
+### Data properties
+:status a owl:DatatypeProperty ; rdfs:domain :Procedure ; rdfs:range xsd:string .
+:performedDateTime a owl:DatatypeProperty ; rdfs:domain :Procedure ; rdfs:range xsd:dateTime .
+
+:Procedure_1 rdf:type owl:NamedIndividual ,
+                     :Procedure ;
+             :status "completed" ;
+             :performedDateTime "2010-10-20T20:56:00+00:00"^^xsd:dateTime ;
+             :code :ProcedureCode_CC_1 ;
+             :subject :Patient_4 ;
+             :context :EpisodeOfCare_1 ;
+             :performer :Practitioner_200001 ;
+             :reason :Condition_1 .

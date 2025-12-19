@@ -1,0 +1,701 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.org/clinical-data-schema",
+  "title": "Clinical Data User-Friendly Format Schema",
+  "description": "Schema for clinical patient data in a user-friendly JSON format",
+  "type": "object",
+  "required": ["patient"],
+  "properties": {
+    "patient": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique patient identifier"
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "family": {
+              "type": "string",
+              "description": "Patient's family name"
+            },
+            "given": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Array of given names"
+            },
+            "text": {
+              "type": "string",
+              "description": "Full name as text"
+            }
+          }
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "other", "unknown"],
+          "description": "Patient's gender"
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of birth in YYYY-MM-DD format"
+        },
+        "nhsNumber": {
+          "type": "string",
+          "description": "NHS number identifier"
+        },
+        "consentToText": {
+          "type": "boolean",
+          "description": "Whether patient has consented to text"
+        },
+        "capacityToConsent": {
+          "type": "boolean",
+          "description": "Whether patient has capacity to consent"
+        },
+        "interpreterRequired": {
+          "type": "boolean",
+          "description": "Whether an interpreter is required"
+        },
+      
+        "address": {
+          "type": "object",
+          "properties": {
+            "line": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Address lines"
+            },
+            "city": {
+              "type": "string",
+              "description": "City name"
+            },
+            "district": {
+              "type": "string",
+              "description": "District or county"
+            },
+            "postalCode": {
+              "type": "string",
+              "description": "Postal/ZIP code"
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "description": "Phone number"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Email address"
+            }
+          }
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "description": "Array of clinical observations",
+      "items": {
+        "type": "object",
+        "required": ["id", "code", "display", "date", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique observation identifier"
+          },
+          "code": {
+            "type": "string",
+            "description": "Observation code (e.g., 'fit', 'hb', 'creatinine')"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable observation name"
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "number",
+                "description": "Numeric observation value"
+              },
+              {
+                "type": "string",
+                "description": "Text observation value (e.g., 'negative', 'former')"
+              }
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement (e.g., 'g/L', 'µg Hb/g')"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date/time of observation in ISO 8601 format"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["final", "preliminary", "amended", "corrected", "cancelled", "entered-in-error"],
+            "description": "Observation status"
+          },
+          "note": {
+            "type": "string",
+            "description": "Additional notes about the observation"
+          }
+        }
+      }
+    },
+    "conditions": {
+      "type": "array",
+      "description": "Array of medical conditions",
+      "items": {
+        "type": "object",
+        "required": ["id", "code", "display", "status", "assertedDate"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique condition identifier"
+          },
+          "code": {
+            "type": "string",
+            "description": "Condition code (e.g., 'diabetesType2', 'hypertension')"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable condition name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "resolved", "remission", "inactive"],
+            "description": "Condition status"
+          },
+          "onsetDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date condition started in YYYY-MM-DD format"
+          },
+          "assertedDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date condition was asserted in YYYY-MM-DD format"
+          }
+        }
+      }
+    },
+    "medications": {
+      "type": "array",
+      "description": "Array of medications",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status", "taken"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique medication identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Medication name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "stopped", "completed", "on-hold", "intended", "entered-in-error"],
+            "description": "Medication status"
+          },
+          "taken": {
+            "type": "string",
+            "enum": ["y", "n", "unk", "na"],
+            "description": "Whether medication is being taken (y=yes, n=no, unk=unknown, na=not applicable)"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date medication started in YYYY-MM-DD format"
+          },
+          "assertedDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date medication was asserted in YYYY-MM-DD format"
+          },
+          "note": {
+            "type": "string",
+            "description": "Additional notes (e.g., 'PRN')"
+          }
+        }
+      }
+    },
+    "familyHistory": {
+      "type": "array",
+      "description": "Array of family member medical history",
+      "items": {
+        "type": "object",
+        "required": ["id", "relationship", "condition", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique family history identifier"
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["father", "mother", "brother", "sister", "son", "daughter", "other"],
+            "description": "Relationship to patient"
+          },
+          "gender": {
+            "type": "string",
+            "enum": ["male", "female", "other", "unknown"],
+            "description": "Family member's gender"
+          },
+          "condition": {
+            "type": "object",
+            "required": ["code", "display"],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Condition code"
+              },
+              "display": {
+                "type": "string",
+                "description": "Human-readable condition name"
+              },
+              "ageAtDiagnosis": {
+                "type": "integer",
+                "description": "Age at diagnosis in years"
+              }
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": ["completed", "partial", "health-unknown", "entered-in-error"],
+            "description": "Family history status"
+          }
+        }
+      }
+    },
+    "allergies": {
+      "type": "array",
+      "description": "Array of allergies and intolerances",
+      "items": {
+        "type": "object",
+        "required": ["id", "substance", "display", "type", "category", "clinicalStatus", "verificationStatus"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique allergy identifier"
+          },
+          "substance": {
+            "type": "string",
+            "description": "Substance causing allergy"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable allergy description"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["allergy", "intolerance"],
+            "description": "Type of reaction"
+          },
+          "category": {
+            "type": "string",
+            "enum": ["food", "medication", "environment", "biologic"],
+            "description": "Allergy category"
+          },
+          "clinicalStatus": {
+            "type": "string",
+            "enum": ["active", "inactive", "resolved"],
+            "description": "Clinical status of allergy"
+          },
+          "verificationStatus": {
+            "type": "string",
+            "enum": ["confirmed", "unconfirmed", "refuted", "entered-in-error"],
+            "description": "Verification status"
+          },
+          "criticality": {
+            "type": "string",
+            "enum": ["low", "high", "unable-to-assess"],
+            "description": "Criticality level"
+          },
+          "reaction": {
+            "type": "object",
+            "properties": {
+              "manifestation": {
+                "type": "string",
+                "description": "Reaction manifestation (e.g., 'Anaphylaxis')"
+              },
+              "onsetDate": {
+                "type": "string",
+                "format": "date",
+                "description": "Date reaction occurred in YYYY-MM-DD format"
+              }
+            }
+          },
+          "assertedDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date allergy was asserted in YYYY-MM-DD format"
+          }
+        }
+      }
+    },
+    "referral": {
+      "type": "object",
+      "description": "Referral information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique referral identifier"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of referral (e.g., 'colorectalSurgery')"
+        },
+        "display": {
+          "type": "string",
+          "description": "Human-readable referral description"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "completed", "cancelled", "draft", "entered-in-error"],
+          "description": "Referral status"
+        },
+        "intent": {
+          "type": "string",
+          "enum": ["order", "plan", "proposal", "option", "filler-order", "instance-order", "reflex-order", "original-order"],
+          "description": "Referral intent"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["routine", "urgent", "asap", "stat"],
+          "description": "Referral priority"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for referral"
+        },
+        "authoredDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date referral was authored in ISO 8601 format"
+        }
+      }
+    },
+    "encounter": {
+      "type": "object",
+      "description": "Encounter/visit information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique encounter identifier"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "arrived", "triaged", "in-progress", "onleave", "finished", "cancelled", "entered-in-error"],
+          "description": "Encounter status"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["inpatient", "outpatient", "emergency", "ambulatory"],
+          "description": "Type of encounter"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Encounter date/time in ISO 8601 format"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for encounter"
+        }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "description": "Healthcare organization information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique organization identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Organization name"
+        },
+        "odsCode": {
+          "type": "string",
+          "description": "ODS (Organisation Data Service) code"
+        }
+      }
+    },
+    "practitioner": {
+      "type": "object",
+      "description": "Healthcare practitioner information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique practitioner identifier"
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "family": {
+              "type": "string",
+              "description": "Practitioner's family name"
+            },
+            "given": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Array of given names"
+            },
+            "text": {
+              "type": "string",
+              "description": "Full name as text"
+            }
+          }
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "other", "unknown"],
+          "description": "Practitioner's gender"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether practitioner is active"
+        },
+        "role": {
+          "type": "string",
+          "description": "Practitioner role (e.g., 'General Practitioner')"
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "description": "Phone number"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Email address"
+            }
+          }
+        },
+        "identifier": {
+          "type": "object",
+          "properties": {
+            "system": {
+              "type": "string",
+              "description": "Identifier system (e.g., GMC number system)"
+            },
+            "value": {
+              "type": "string",
+              "description": "Identifier value"
+            }
+          }
+        }
+      }
+    },
+    "procedures": {
+      "type": "array",
+      "description": "Array of medical procedures",
+      "items": {
+        "type": "object",
+        "required": ["id", "code", "display", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique procedure identifier"
+          },
+          "code": {
+            "type": "string",
+            "description": "Procedure code"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable procedure name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["preparation", "in-progress", "not-done", "on-hold", "stopped", "completed", "entered-in-error", "unknown"],
+            "description": "Procedure status"
+          },
+          "performedDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date/time procedure was performed in ISO 8601 format"
+          },
+          "performer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "reference": {
+                  "type": "string",
+                  "description": "Reference to practitioner who performed the procedure"
+                },
+                "display": {
+                  "type": "string",
+                  "description": "Practitioner name"
+                }
+              }
+            },
+            "description": "Practitioners who performed the procedure"
+          },
+          "reason": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "reference": {
+                  "type": "string",
+                  "description": "Reference to condition that was the reason for the procedure"
+                },
+                "display": {
+                  "type": "string",
+                  "description": "Condition description"
+                }
+              }
+            },
+            "description": "Reasons for performing the procedure"
+          },
+          "context": {
+            "type": "object",
+            "properties": {
+              "reference": {
+                "type": "string",
+                "description": "Reference to encounter or episode of care"
+              },
+              "display": {
+                "type": "string",
+                "description": "Context description"
+              }
+            },
+            "description": "Encounter or episode of care context"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// "rules": {
+//   "type": "array",
+//   "description": "Array of clinical decision rules",
+//   "items": {
+//     "type": "object",
+//     "required": ["id", "name", "description", "conditions", "guidance"],
+//     "properties": {
+//       "id": {
+//         "type": "string",
+//         "description": "Unique rule identifier"
+//       },
+//       "name": {
+//         "type": "string",
+//         "description": "Rule name"
+//       },
+//       "description": {
+//         "type": "string",
+//         "description": "Detailed rule description"
+//       },
+//       "conditions": {
+//         "type": "object",
+//         "description": "Rule conditions",
+//         "properties": {
+//           "observations": {
+//             "type": "object",
+//             "description": "Observation-based conditions",
+//             "additionalProperties": {
+//               "type": "object",
+//               "properties": {
+//                 "operator": {
+//                   "type": "string",
+//                   "enum": [">", "<", ">=", "<=", "==", "!="],
+//                   "description": "Comparison operator"
+//                 },
+//                 "threshold": {
+//                   "type": "number",
+//                   "description": "Threshold value"
+//                 }
+//               }
+//             }
+//           },
+//           "conditions": {
+//             "type": "object",
+//             "description": "Condition-based rules",
+//             "properties": {
+//               "any_of": {
+//                 "type": "array",
+//                 "items": {
+//                   "type": "string"
+//                 },
+//                 "description": "Array of condition codes (any must match)"
+//               },
+//               "all_of": {
+//                 "type": "array",
+//                 "items": {
+//                   "type": "string"
+//                 },
+//                 "description": "Array of condition codes (all must match)"
+//               }
+//             }
+//           }
+//         }
+//       },
+//       "guidance": {
+//         "type": "object",
+//         "required": ["code", "text"],
+//         "properties": {
+//           "code": {
+//             "type": "string",
+//             "description": "Guidance code (e.g., 'URGENT_REFERRAL')"
+//           },
+//           "priority": {
+//             "type": "string",
+//             "enum": ["routine", "urgent", "asap", "stat"],
+//             "description": "Guidance priority"
+//           },
+//           "text": {
+//             "type": "string",
+//             "description": "Guidance text"
+//           }
+//         }
+//       },
+//       "actions": {
+//         "type": "array",
+//         "description": "Recommended actions",
+//         "items": {
+//           "type": "object",
+//           "properties": {
+//             "type": {
+//               "type": "string",
+//               "description": "Action type (e.g., 'urgent_referral')"
+//             },
+//             "description": {
+//               "type": "string",
+//               "description": "Action description"
+//             },
+//             "timeframe": {
+//               "type": "string",
+//               "description": "Timeframe for action (e.g., '2 weeks')"
+//             },
+//             "urgency": {
+//               "type": "string",
+//               "enum": ["routine", "urgent", "asap", "stat"],
+//               "description": "Action urgency"
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
