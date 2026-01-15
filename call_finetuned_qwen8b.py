@@ -39,12 +39,30 @@ else:
     print("⚠️  WARNING: No GPU detected! Processing will be slow on CPU.")
 
 # Load model once at startup
+# With 48GB VRAM (A6000), we can use 8-bit for faster inference than 4-bit
+# If you want even faster, you could use load_in_4bit=False (full precision)
+# but that would use more memory (~16GB for 4B model)
 print(f"\nLoading model {MODEL_REPO}...")
-model, tokenizer = FastVisionModel.from_pretrained(
-    MODEL_REPO,
-    load_in_4bit=True,
-    device_map="auto",  # Automatically place model on GPU
-)
+try:
+    # Try 8-bit first (faster than 4-bit, uses ~8GB VRAM for 4B model)
+    from transformers import BitsAndBytesConfig
+    quantization_config = BitsAndBytesConfig(
+        load_in_8bit=True,
+    )
+    model, tokenizer = FastVisionModel.from_pretrained(
+        MODEL_REPO,
+        quantization_config=quantization_config,
+        device_map="auto",
+    )
+    print("✅ Loaded in 8-bit (faster than 4-bit)")
+except Exception as e:
+    print(f"⚠️  8-bit loading failed: {e}")
+    print("Falling back to 4-bit...")
+    model, tokenizer = FastVisionModel.from_pretrained(
+        MODEL_REPO,
+        load_in_4bit=True,
+        device_map="auto",
+    )
 FastVisionModel.for_inference(model)
 
 # Verify model is on GPU
