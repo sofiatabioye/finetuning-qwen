@@ -28,7 +28,13 @@ print(f"Device: {device}")
 if torch.cuda.is_available():
     print(f"GPU: {torch.cuda.get_device_name(0)}")
     print(f"CUDA Version: {torch.version.cuda}")
-    print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
+    gpu_props = torch.cuda.get_device_properties(0)
+    print(f"GPU Memory: {gpu_props.total_memory / 1024**3:.2f} GB")
+    print(f"CUDA Cores: {gpu_props.multi_processor_count}")
+    # Enable GPU optimizations
+    torch.backends.cudnn.benchmark = True  # Optimize for consistent input sizes
+    torch.backends.cuda.matmul.allow_tf32 = True  # Enable TF32 for faster matmul (Ampere+)
+    print("✅ GPU optimizations enabled")
 else:
     print("⚠️  WARNING: No GPU detected! Processing will be slow on CPU.")
 
@@ -46,6 +52,16 @@ model_device = next(model.parameters()).device
 print(f"Model device: {model_device}")
 if str(model_device).startswith("cuda"):
     print("✅ Model is on GPU!")
+    # Try to compile model for faster inference (PyTorch 2.0+)
+    try:
+        if hasattr(torch, 'compile'):
+            print("Compiling model for faster inference...")
+            model = torch.compile(model, mode="reduce-overhead")
+            print("✅ Model compiled successfully!")
+        else:
+            print("ℹ️  torch.compile not available (requires PyTorch 2.0+)")
+    except Exception as e:
+        print(f"⚠️  Could not compile model: {e} (continuing without compilation)")
 else:
     print("⚠️  WARNING: Model is not on GPU!")
 
@@ -121,16 +137,18 @@ with open(USER_MESSAGES_PATH, 'r', encoding='utf-8') as f:
             # Ensure all inputs are on the same device as the model
             inputs = {k: v.to(model.device) for k, v in inputs.items()}
             
-            # Generate with optimizations
+            # Generate with optimizations for speed
             # Use torch.inference_mode() for better performance than no_grad()
             with torch.inference_mode():
                 out = model.generate(
                     **inputs,
-                    max_new_tokens=5000,
-                    temperature=1.0,
-                    top_p=0.9,
-                    do_sample=True,  # Enable sampling for better quality
+                    max_new_tokens=3000,  # Reduced from 5000 for faster generation (adjust if needed)
+                    temperature=0.1,  # Lower temperature = faster, more deterministic
+                    top_p=0.8,  # Lower top_p = faster sampling
+                    do_sample=True,  # Keep sampling for quality
                     pad_token_id=tokenizer.eos_token_id,  # Avoid padding warnings
+                    use_cache=True,  # Enable KV cache for faster generation
+                    num_beams=1,  # Greedy decoding (faster than beam search)
                 )
             
             # Decode output
