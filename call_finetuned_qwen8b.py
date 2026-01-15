@@ -22,13 +22,33 @@ if len(sys.argv) > 1:
     except ValueError:
         print(f"Warning: Invalid line number '{sys.argv[1]}', processing all items")
 
+# Check GPU availability
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"Device: {device}")
+if torch.cuda.is_available():
+    print(f"GPU: {torch.cuda.get_device_name(0)}")
+    print(f"CUDA Version: {torch.version.cuda}")
+    print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
+else:
+    print("⚠️  WARNING: No GPU detected! Processing will be slow on CPU.")
+
 # Load model once at startup
-print(f"Loading model {MODEL_REPO}...")
+print(f"\nLoading model {MODEL_REPO}...")
 model, tokenizer = FastVisionModel.from_pretrained(
     MODEL_REPO,
     load_in_4bit=True,
+    device_map="auto",  # Automatically place model on GPU
 )
 FastVisionModel.for_inference(model)
+
+# Verify model is on GPU
+model_device = next(model.parameters()).device
+print(f"Model device: {model_device}")
+if str(model_device).startswith("cuda"):
+    print("✅ Model is on GPU!")
+else:
+    print("⚠️  WARNING: Model is not on GPU!")
+
 print("Model loaded successfully!")
 
 # Create output directory
@@ -98,15 +118,19 @@ with open(USER_MESSAGES_PATH, 'r', encoding='utf-8') as f:
             
             # Tokenize
             inputs = tokenizer(image, prompt, return_tensors="pt")
+            # Ensure all inputs are on the same device as the model
             inputs = {k: v.to(model.device) for k, v in inputs.items()}
             
-            # Generate
-            with torch.no_grad():
+            # Generate with optimizations
+            # Use torch.inference_mode() for better performance than no_grad()
+            with torch.inference_mode():
                 out = model.generate(
                     **inputs,
                     max_new_tokens=5000,
                     temperature=1.0,
                     top_p=0.9,
+                    do_sample=True,  # Enable sampling for better quality
+                    pad_token_id=tokenizer.eos_token_id,  # Avoid padding warnings
                 )
             
             # Decode output
