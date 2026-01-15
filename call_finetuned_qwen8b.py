@@ -14,13 +14,13 @@ OUTPUT_DIR = "llm_outputs/finetuned_qwen4b/results"
 BASE_IMAGE_DIR = "."  # Base directory for images (adjust if needed)
 
 # Parse command-line arguments
-target_item_index = None
+target_line_number = None
 if len(sys.argv) > 1:
     try:
-        target_item_index = int(sys.argv[1])
-        print(f"Target item index: {target_item_index}")
+        target_line_number = int(sys.argv[1])
+        print(f"Target line number: {target_line_number}")
     except ValueError:
-        print(f"Warning: Invalid item index '{sys.argv[1]}', processing all items")
+        print(f"Warning: Invalid line number '{sys.argv[1]}', processing all items")
 
 # Load model once at startup
 print(f"Loading model {MODEL_REPO}...")
@@ -51,8 +51,9 @@ with open(USER_MESSAGES_PATH, 'r', encoding='utf-8') as f:
             item = json.loads(line)
             item_index = item.get('item_index', line_num)
             
-            # Skip if we're targeting a specific index and this isn't it
-            if target_item_index is not None and item_index != target_item_index:
+            # Skip if we're targeting a specific line number and this isn't it
+            # (line_num is 1-indexed, matching the line number in the file)
+            if target_line_number is not None and line_num != target_line_number:
                 continue
             
             user_message = item.get('user_message', {})
@@ -172,11 +173,11 @@ with open(USER_MESSAGES_PATH, 'r', encoding='utf-8') as f:
             continue
 
 print(f"\n✓ Processing complete!")
-if target_item_index is not None:
+if target_line_number is not None:
     if processed_items == 0:
-        print(f"  ⚠ Item index {target_item_index} not found!")
+        print(f"  ⚠ Line {target_line_number} not found or had no valid image!")
     else:
-        print(f"  ✓ Processed item index {target_item_index}")
+        print(f"  ✓ Processed line {target_line_number}")
 else:
     print(f"  Total items processed: {processed_items}/{total_items}")
 print(f"  Results saved to: {output_path}")
