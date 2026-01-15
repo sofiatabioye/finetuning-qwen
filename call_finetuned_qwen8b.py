@@ -119,6 +119,9 @@ with open(USER_MESSAGES_PATH, 'r', encoding='utf-8') as f:
             for content_item in content:
                 if content_item.get('type') == 'image':
                     image_path = content_item.get('image')
+                    # Strip any quotes that might be in the path
+                    if image_path:
+                        image_path = image_path.strip('"\'')
                     break
             
             if not image_path:
@@ -176,7 +179,8 @@ with open(USER_MESSAGES_PATH, 'r', encoding='utf-8') as f:
             processing_time = time.time() - start_time
             
             # Extract filename (without extension) for output folder
-            image_filename = Path(image_path).stem
+            # Strip any quotes that might be in the path
+            image_filename = Path(image_path).stem.strip('"\'')
             
             # Save result to JSON file
             output_filename = f"{image_filename}_finetuned_qwen4b.json"
